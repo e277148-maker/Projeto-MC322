@@ -3,6 +3,7 @@ public class heroi {
     int vida;
     int escudo;
     int energia;
+    boolean turno;
     
     void receberDano(int dano){
         if (dano > escudo){
