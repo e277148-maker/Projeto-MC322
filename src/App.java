@@ -16,7 +16,7 @@ public class App {
         CartaDeDano d = new CartaDeDano();
         d.nome = "Espada";
         d.custo = 2;
-        d.efeito = 10;
+        d.efeito = 15;
 
         CartaEscudo e = new CartaEscudo();
         e.nome = "Armadura";
