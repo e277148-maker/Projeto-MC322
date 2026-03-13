@@ -3,7 +3,7 @@ public class CartaDeDano {
     int custo;
     int efeito;
 
-    void usarCarta(heroi nomeHeroi, inimigo nomeInimigo){
+    void usarCartaDano(heroi nomeHeroi, inimigo nomeInimigo){
         nomeInimigo.receberDano(efeito);
         nomeHeroi.perderEnergia(custo);
     }

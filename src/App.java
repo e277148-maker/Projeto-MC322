@@ -1,79 +1,152 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
         heroi h = new heroi();
-        h.vida = 40;
+        h.vida = 50;
         h.escudo = 0;
-        h.energia  = 3;
+        h.energia = 6;
 
         inimigo i = new inimigo();
-        i.nome = "Rato";
-        i.vida = 20;
+        i.nome = "Goblin raivoso";
+        i.vida = 30;
         i.escudo = 0;
-        i.ataque = 15;
+        i.ataque = 10;
 
         CartaDeDano d = new CartaDeDano();
         d.nome = "Espada";
         d.custo = 2;
-        d.efeito = 15;
+        d.efeito = 10;
 
         CartaEscudo e = new CartaEscudo();
         e.nome = "Armadura";
         e.custo = 1;
-        e.efeito = 10;
+        e.efeito = 15;
+
+        System.out.println("");
+        System.out.println("Olá jogador! Seja bem vindo e se prepare para a jornada...");
+        System.out.println("");
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Digite o nome do heroi:");
+        System.out.println("Comece escolhendo o nome de seu herói: ");
         h.nome = scanner.next();
-        
+        System.out.println("");
+        System.out.println("Boa sorte na batalha, você irá precisar! ");
+        System.out.println("");
 
+        ponto_controle:
         while (h.vida > 0 && i.vida > 0) { // Batalha
+
             h.turno = true;
+            h.escudo = 0;
+
             while (h.turno) { // Turno do heroi
-                System.out.printf("%s (%d/40 de vida) (%d de escudo) (%d/3 de energia)", h.nome, h.vida, h.escudo, h.energia);
-                System.out.printf("%s (%d/20 de vida) (%d de escudo)", i.nome, i.vida, i.escudo);
+
+                System.out.println("");
+                System.out.printf("%s (%d/50 de vida) (%d de escudo) (%d/6 de energia)\n", h.nome, h.vida, h.escudo, h.energia);
+                System.out.println("vs");
+                System.out.printf("%s (%d/30 de vida) (%d de escudo)\n", i.nome, i.vida, i.escudo);
+                System.out.println("");
                 System.out.println("1 - Usar carta de dano");
                 System.out.println("2 - Usar carta de escudo");
                 System.out.println("3 - Encerrar turno");
-                System.out.print("Escolha: ");
-                int ação = scanner.nextInt();
+                System.out.println("");
+                System.out.println("Escolha: ");
+                System.out.println("");
 
-                if (ação == 1){ // Carta de dano
+                int escolha = scanner.nextInt();
+
+                if (escolha == 1){ // Carta de dano
+
                     if (h.energia >= d.custo){ // Energia suficiente
-                        d.usarCarta(h, i);
+                        d.usarCartaDano(h, i);
+
+                        if (i.vida <= 0) {
+
+                            System.out.println("");
+                            System.out.printf("Parabéns, %s! Você ganhou o combate\n", h.nome);
+
+                            break ponto_controle;
+
+                        }
+
                     }
+
                     else{
+
+                        System.out.println("");
                         System.out.println("Não possui energia suficiente para utiliza essa carta");
+
                     }
-                }
-                if (ação == 2){ // Carde escudo
+
+                } else if (escolha == 2){ // Carta de escudo
+
                     if (h.energia >= e.custo){ // Energia suficiente
-                        e.usarCarta(h);
+                        e.usarCartaHeroi(h);
                     }
+
                     else{ // Sem energia
+
+                        System.out.println("");
                         System.out.println("Não possui energia suficiente para utiliza essa carta"); 
+
                     }
-                }
-                if (ação == 3){ // Encerrar turno
-                    if (h.energia < 3){ // Reabastecer energia
-                        h.energia++;
-                    }
+
+                } else if (escolha == 3) { // Encerrar turno
+
+                    h.escudo = 0;
+                    h.energia = 6;
                     h.turno = false;
-                }
-                else{
+
+                } else {
+
+
+                    System.out.println("");
                     System.out.println("Escolha invalida, tente novamente");
+
                 }
 
             }
             // Turno do inimigo
 
             // Sugestão: Escolher um numero aleatorio, se for par, ataque, se for impar, use o escudo.
+
+            Random random = new Random();
+
+            int acaoInimigo = random.nextInt(3);
+
+            switch (acaoInimigo) {
+
+                case 0:
+
+                    i.atacar(h);
+                    break;
+
+                case 1:
+
+                    e.usarCartaInimigo(i);
+                    break;
+
+                case 2:
+
+                    i.atacar(h);
+                    e.usarCartaInimigo(i);
+                    break;
+
+                }
+
+                if (!h.estarVivo()) {
+
+                    System.out.println("");
+                    System.out.println("Que pena... Você perdeu o combate");
+                    break ponto_controle;
+
+            }
+
         }
 
-
-
-
         scanner.close(); // Nescessario ?
+
     }
 }
