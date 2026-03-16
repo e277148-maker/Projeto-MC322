@@ -1,28 +1,52 @@
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
+
+        // Inicializar cartas e entidades
+
         heroi h = new heroi();
-        h.vida = 50;
-        h.escudo = 0;
-        h.energia = 6;
+        h.setVida(50);
+        h.setEscudo(0);
+        h.setEnergia(6);
 
         inimigo i = new inimigo();
-        i.nome = "Goblin raivoso";
-        i.vida = 30;
-        i.escudo = 0;
-        i.ataque = 10;
+        i.setNome("Goblin raivoso");
+        i.setVida(30);
+        i.setEscudo(0);
+        i.setAtaque(10);
 
         CartaDeDano d = new CartaDeDano();
-        d.nome = "Espada";
-        d.custo = 2;
-        d.efeito = 10;
+        d.setNome("Espada");
+        d.setCusto(2);
+        d.setEfeito(10);
 
         CartaEscudo e = new CartaEscudo();
-        e.nome = "Armadura";
-        e.custo = 1;
-        e.efeito = 15;
+        e.setNome("Armadura");
+        e.setCusto(1);
+        e.setEfeito(15);
+
+        // Criar baralho
+
+        Baralho b = new Baralho();
+
+        List<Carta> pilhaDeCompra = new ArrayList<>();
+        pilhaDeCompra.add(d);
+        pilhaDeCompra.add(e);
+
+        List<Carta> mao = new ArrayList<>();
+        List<Carta> pilhaDeDescarte = new ArrayList<>();
+        
+
+        b.setPilhaDeCompra(pilhaDeCompra);
+        b.setPilhaDeDescarte(pilhaDeDescarte);
+        b.setMao(mao);
+
+
+        // Escolher o nome do heroi
 
         System.out.println("");
         System.out.println("Olá jogador! Seja bem vindo e se prepare para a jornada...");
@@ -30,23 +54,25 @@ public class App {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Comece escolhendo o nome de seu herói: ");
-        h.nome = scanner.next();
+        h.setNome(scanner.next());
         System.out.println("");
         System.out.println("Boa sorte na batalha, você irá precisar! ");
         System.out.println("");
 
+        // Batalha
+
         ponto_controle:
-        while (h.vida > 0 && i.vida > 0) { // Batalha
+        while (h.getVida() > 0 && i.getVida() > 0) {
 
-            h.turno = true;
-            h.escudo = 0;
+            h.setTurno(true);
+            h.setEscudo(0);
 
-            while (h.turno) { // Turno do heroi
+            while (h.getTurno()) { // Turno do heroi
 
                 System.out.println("");
-                System.out.printf("%s (%d/50 de vida) (%d de escudo) (%d/6 de energia)\n", h.nome, h.vida, h.escudo, h.energia);
+                System.out.printf("%s (%d/50 de vida) (%d de escudo) (%d/6 de energia)\n", h.getNome(), h.getVida(), h.getEscudo(), h.getEnergia());
                 System.out.println("vs");
-                System.out.printf("%s (%d/30 de vida) (%d de escudo)\n", i.nome, i.vida, i.escudo);
+                System.out.printf("%s (%d/30 de vida) (%d de escudo)\n", i.getNome(), i.getVida(), i.getEscudo());
                 System.out.println("");
                 System.out.println("1 - Usar carta de dano");
                 System.out.println("2 - Usar carta de escudo");
@@ -59,13 +85,13 @@ public class App {
 
                 if (escolha == 1){ // Carta de dano
 
-                    if (h.energia >= d.custo){ // Energia suficiente
+                    if (h.getEnergia() >= d.getCusto()){ // Energia suficiente
                         d.usarCartaDano(h, i);
 
-                        if (i.vida <= 0) {
+                        if (i.getVida() <= 0) {
 
                             System.out.println("");
-                            System.out.printf("Parabéns, %s! Você ganhou o combate\n", h.nome);
+                            System.out.printf("Parabéns, %s! Você ganhou o combate\n", h.getNome());
 
                             break ponto_controle;
 
@@ -82,7 +108,7 @@ public class App {
 
                 } else if (escolha == 2){ // Carta de escudo
 
-                    if (h.energia >= e.custo){ // Energia suficiente
+                    if (h.getEnergia() >= e.getCusto()){ // Energia suficiente
                         e.usarCartaHeroi(h);
                     }
 
@@ -95,9 +121,7 @@ public class App {
 
                 } else if (escolha == 3) { // Encerrar turno
 
-                    h.escudo = 0;
-                    h.energia = 6;
-                    h.turno = false;
+                    h.setTurno(false);
 
                 } else {
 
@@ -109,8 +133,6 @@ public class App {
 
             }
             // Turno do inimigo
-
-            // Sugestão: Escolher um numero aleatorio, se for par, ataque, se for impar, use o escudo.
 
             Random random = new Random();
 
@@ -144,9 +166,15 @@ public class App {
 
             }
 
+            // Entre rodadas
+
+            h.setEscudo(0);
+            h.ganharEnergia();
+
+
         }
 
-        scanner.close(); // Nescessario ?
+        scanner.close();
 
     }
 }

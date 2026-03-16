@@ -1,52 +1,42 @@
-public class heroi {
 
-    String nome;
 
-    int vida;
-    int escudo;
-    int energia;
+public class heroi extends Entidade{
 
-    boolean turno;
+    private int energia;
+    private boolean turno;
 
-    void receberDano(int dano){
+    // Getters
 
-        int danoReal = dano - escudo;  // Escudo reduz o dano
-
-        if (danoReal < 0) {
-
-            danoReal = 0;  // Não pode ter dano negativo
-        }
-
-        escudo = escudo - dano;  // Escudo é consumido
-
-        if (escudo < 0) {
-
-            escudo = 0;
-
-        }
-
-        vida = vida - danoReal;
-
-        if (vida < 0) {
-
-            vida = 0;
-
-        }
-
+    public int getEnergia(){
+        return energia;
     }
 
-        void ganharEscudo(int defesa){
-        escudo += defesa;
+    public boolean getTurno(){
+        return turno;
     }
-    boolean estarVivo(){
-        if (vida > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+
+    // Setters
+
+    public void setTurno(boolean turno){
+        this.turno = turno;
     }
+
+    public void setEnergia(int energia){
+        this.energia = energia;
+    }
+    
+    // Outros metodos
+
     void perderEnergia(int gasto){
         energia = energia - gasto;
+    }
+
+    void ganharEnergia(){
+        if (energia <= 4){
+            energia += 2;
+        }
+        if (energia == 5){
+            energia++;
+        }   
     }
 }

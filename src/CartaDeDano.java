@@ -1,10 +1,7 @@
-public class CartaDeDano {
-    String nome;
-    int custo;
-    int efeito;
+public class CartaDeDano extends Carta {
 
     void usarCartaDano(heroi nomeHeroi, inimigo nomeInimigo){
-        nomeInimigo.receberDano(efeito);
-        nomeHeroi.perderEnergia(custo);
+        nomeInimigo.receberDano(getEfeito());
+        nomeHeroi.perderEnergia(getCusto());
     }
 }

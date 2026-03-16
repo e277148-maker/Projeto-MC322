@@ -1,60 +1,23 @@
-public class inimigo {
+public class inimigo extends Entidade{
 
-    String nome;
+    private int ataque;
 
-    int vida;
-    int escudo;
-    int ataque;
+    // Getters
+
+    public int getAtaque(){
+        return ataque;
+    }
+
+    // Setters
+
+    public void setAtaque(int ataque){
+        this.ataque = ataque;
+    }
     
-    void receberDano(int dano){
-
-        int danoReal = dano - escudo;
-
-        if (danoReal < 0) {
-
-            danoReal = 0;
-        }
-
-        escudo = escudo - dano;
-
-        if (escudo < 0) {
-
-            escudo = 0;
-
-        }
-
-        vida = vida - danoReal;
-
-        if (vida < 0) {
-
-            vida = 0;
-
-        }
-
-    }
-
-    void ganharEscudo(int defesa){
-
-        escudo += defesa;
-
-    }
-
-
+    
     void atacar(heroi nomeHeroi){
         nomeHeroi.receberDano(ataque);
     }
 
-    boolean estarVivo(){
-
-        if (vida > 0){
-
-            return true;
-
-        } else {
-
-            return false;
-
-        }
-    }
 }
 
