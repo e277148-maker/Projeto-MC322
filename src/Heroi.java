@@ -1,4 +1,4 @@
-public class heroi {
+public class Heroi {
 
     String nome;
 

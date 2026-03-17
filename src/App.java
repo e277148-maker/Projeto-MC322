@@ -3,12 +3,12 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        heroi h = new heroi();
+        Heroi h = new Heroi();
         h.vida = 50;
         h.escudo = 0;
         h.energia = 6;
 
-        inimigo i = new inimigo();
+        Inimigo i = new Inimigo();
         i.nome = "Goblin raivoso";
         i.vida = 30;
         i.escudo = 0;
@@ -110,8 +110,6 @@ public class App {
             }
             // Turno do inimigo
 
-            // Sugestão: Escolher um numero aleatorio, se for par, ataque, se for impar, use o escudo.
-
             Random random = new Random();
 
             int acaoInimigo = random.nextInt(3);
@@ -146,7 +144,7 @@ public class App {
 
         }
 
-        scanner.close(); // Nescessario ?
+        scanner.close();
 
     }
 }

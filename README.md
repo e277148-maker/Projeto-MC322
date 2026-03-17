@@ -1,18 +1,28 @@
-## Getting Started
+# Slay the Spire!
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Esta é uma implementação simplificada de um jogo inspirado em Slay the Spire. Simula-se uma batalha em turnos entre um herói e um inimigo utilizando cartas de dano e escudo.
 
-## Folder Structure
+## Como jogar
 
-The workspace contains two folders by default, where:
+    O herói começa com 50 de vida e 6 de energia por turno, já o inimigo começa com 30 de vida e causa 10 de dano. O jogador deve escolher quais cartar usar de acordo com a energia disponível e sua estratégia, focando em derrotar o inimigo. Ao fim de cada turno, sua energia é restaurada e seu escudo zerado, passando a vez para o inimigo, que pode causar dano, usar escudo ou ambos.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+    **Cartas disponíveis:**
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+        -Espada (custo 2): causa 10 de dano ao inimigo
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+        -Armadura (custo 1): adiciona 15 de escudo ao herói
 
-## Dependency Management
+## Compilação e execução
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+### Compilar
+
+* javac -d bin src/*.java *
+
+### Executar
+
+* java -cp bin App *
+
+## Autores
+
+[Leonardo Mascioli Amêndola] - RA: [204382]
+[Enzo Villani Tonus] - RA: [277148]
