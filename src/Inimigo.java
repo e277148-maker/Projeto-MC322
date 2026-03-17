@@ -1,4 +1,4 @@
-public class inimigo {
+public class Inimigo {
 
     String nome;
 
@@ -40,7 +40,7 @@ public class inimigo {
     }
 
 
-    void atacar(heroi nomeHeroi){
+    void atacar(Heroi nomeHeroi){
         nomeHeroi.receberDano(ataque);
     }
 

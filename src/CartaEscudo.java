@@ -1,15 +1,18 @@
 public class CartaEscudo {
+
     String nome;
+
     int custo;
     int efeito;
 
-    void usarCartaHeroi(heroi nomeHeroi){
+    // metodos para usar carta de escudo no heroi
+    void usarCartaHeroi(Heroi nomeHeroi){
         nomeHeroi.ganharEscudo(efeito);
         nomeHeroi.perderEnergia(custo);
     }
 
-
-    void usarCartaInimigo(inimigo nomeInimigo){
+    // metodo para usar carta de escudo no inimigo
+    void usarCartaInimigo(Inimigo nomeInimigo){
         nomeInimigo.ganharEscudo(efeito);
     }
 

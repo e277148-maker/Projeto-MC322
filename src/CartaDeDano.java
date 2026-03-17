@@ -1,10 +1,14 @@
 public class CartaDeDano {
+
     String nome;
     int custo;
     int efeito;
 
-    void usarCartaDano(heroi nomeHeroi, inimigo nomeInimigo){
+    // Metodos para usar carta de dano
+    void usarCartaDano(Heroi nomeHeroi, Inimigo nomeInimigo){
+
         nomeInimigo.receberDano(efeito);
         nomeHeroi.perderEnergia(custo);
+
     }
 }
