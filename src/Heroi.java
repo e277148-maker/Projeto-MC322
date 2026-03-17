@@ -37,16 +37,23 @@ public class Heroi {
 
         void ganharEscudo(int defesa){
         escudo += defesa;
+
     }
+
     boolean estarVivo(){
+
         if (vida > 0){
             return true;
         }
+
         else{
             return false;
         }
+
     }
+
     void perderEnergia(int gasto){
         energia = energia - gasto;
     }
+
 }

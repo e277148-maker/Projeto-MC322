@@ -1,7 +1,10 @@
+// importando as classes para usar no jogo
+
 import java.util.Random;
 import java.util.Scanner;
 
 public class App {
+
     public static void main(String[] args) throws Exception {
 
         // criando herói, inimigo e cartas
