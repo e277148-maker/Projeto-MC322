@@ -8,9 +8,9 @@ O herói começa com 50 de vida e 6 de energia por turno, já o inimigo começa 
 
 **Cartas disponíveis:**
 
--Espada (custo 2): causa 10 de dano ao inimigo
+- Espada (custo 2): causa 10 de dano ao inimigo
 
--Armadura (custo 1): adiciona 15 de escudo ao herói
+- Armadura (custo 1): adiciona 15 de escudo ao herói
 
 ## Compilação e execução
 
