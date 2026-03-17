@@ -25,4 +25,5 @@ O herói começa com 50 de vida e 6 de energia por turno, já o inimigo começa 
 ## Autores
 
 [Leonardo Mascioli Amêndola] - RA: [204382]
+
 [Enzo Villani Tonus] - RA: [277148]
