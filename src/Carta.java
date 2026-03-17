@@ -1,4 +1,4 @@
-public class Carta {
+public abstract class Carta {
     private String nome;
     private int custo;
     private int efeito;
@@ -30,6 +30,8 @@ public class Carta {
     public void setEfeito(int efeito){
         this.efeito = efeito;
     }
+
+    public abstract void usar(heroi nomeHeroi, inimigo nomeInimigo);
 
     
 }

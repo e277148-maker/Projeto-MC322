@@ -1,6 +1,6 @@
 public class CartaEscudo extends Carta{
 
-    void usarCartaHeroi(heroi nomeHeroi){
+    public void usar(heroi nomeHeroi, inimigo nomeInimigo){
         nomeHeroi.ganharEscudo(getEfeito());
         nomeHeroi.perderEnergia(getCusto());
     }

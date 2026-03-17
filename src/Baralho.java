@@ -16,7 +16,7 @@ public class Baralho {
         return pilhaDeDescarte;
     }
 
-    public List <Carta> mao(){
+    public List <Carta> getMao(){
         return mao;
     }
 
@@ -65,4 +65,5 @@ public class Baralho {
             System.out.println(mao.get(i).getNome());
         }
     }
+
 }

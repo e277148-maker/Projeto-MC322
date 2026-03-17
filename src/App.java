@@ -1,6 +1,5 @@
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 public class App {
@@ -61,120 +60,8 @@ public class App {
 
         // Batalha
 
-        ponto_controle:
-        while (h.getVida() > 0 && i.getVida() > 0) {
-
-            h.setTurno(true);
-            h.setEscudo(0);
-
-            while (h.getTurno()) { // Turno do heroi
-
-                b.comprarCarta();
-
-                System.out.println("");
-                System.out.printf("%s (%d/50 de vida) (%d de escudo) (%d/6 de energia)\n", h.getNome(), h.getVida(), h.getEscudo(), h.getEnergia());
-                System.out.println("vs");
-                System.out.printf("%s (%d/30 de vida) (%d de escudo)\n", i.getNome(), i.getVida(), i.getEscudo());
-                System.out.println("");
-                System.out.println("1 - Usar carta de dano");
-                System.out.println("2 - Usar carta de escudo");
-                System.out.println("3 - Encerrar turno");
-                System.out.println("");
-                System.out.println("Escolha: ");
-                System.out.println("");
-
-                int escolha = scanner.nextInt();
-
-                if (escolha == 1){ // Carta de dano
-
-                    if (h.getEnergia() >= d.getCusto()){ // Energia suficiente
-                        d.usarCartaDano(h, i);
-
-                        if (i.getVida() <= 0) {
-
-                            System.out.println("");
-                            System.out.printf("Parabéns, %s! Você ganhou o combate\n", h.getNome());
-
-                            break ponto_controle;
-
-                        }
-
-                    }
-
-                    else{
-
-                        System.out.println("");
-                        System.out.println("Não possui energia suficiente para utiliza essa carta");
-
-                    }
-
-                } else if (escolha == 2){ // Carta de escudo
-
-                    if (h.getEnergia() >= e.getCusto()){ // Energia suficiente
-                        e.usarCartaHeroi(h);
-                    }
-
-                    else{ // Sem energia
-
-                        System.out.println("");
-                        System.out.println("Não possui energia suficiente para utiliza essa carta"); 
-
-                    }
-
-                } else if (escolha == 3) { // Encerrar turno
-
-                    h.setTurno(false);
-
-                } else {
-
-
-                    System.out.println("");
-                    System.out.println("Escolha invalida, tente novamente");
-
-                }
-
-            }
-            // Turno do inimigo
-
-            Random random = new Random();
-
-            int acaoInimigo = random.nextInt(3);
-
-            switch (acaoInimigo) {
-
-                case 0:
-
-                    i.atacar(h);
-                    break;
-
-                case 1:
-
-                    e.usarCartaInimigo(i);
-                    break;
-
-                case 2:
-
-                    i.atacar(h);
-                    e.usarCartaInimigo(i);
-                    break;
-
-                }
-
-                if (!h.estarVivo()) {
-
-                    System.out.println("");
-                    System.out.println("Que pena... Você perdeu o combate");
-                    break ponto_controle;
-
-            }
-
-            // Entre rodadas
-
-            h.setEscudo(0);
-            h.ganharEnergia();
-
-
-        }
+        Batalha batalha = new Batalha();
+        batalha.rodarBatalha(b, h, i, scanner);
 
         scanner.close();
 
