@@ -37,16 +37,18 @@ public class Baralho {
     // Outros metodos
 
     public void comprarCarta(){
-        Random random = new Random();
-        int indice = random.nextInt(pilhaDeCompra.size());
-        mao.add(pilhaDeCompra.get(indice));
-        pilhaDeCompra.remove(indice);
-        if(pilhaDeCompra.size() == 0){
-            for(int i = 0; i < pilhaDeDescarte.size(); i++){
-                pilhaDeCompra.add(pilhaDeDescarte.get(i));
-                pilhaDeDescarte.remove(i);
-            }
-        }
+        if (pilhaDeCompra.size() != 0){
+            Random random = new Random();
+            int indice = random.nextInt(pilhaDeCompra.size());
+            mao.add(pilhaDeCompra.get(indice));
+            pilhaDeCompra.remove(indice);
+            if(pilhaDeCompra.size() == 0 && pilhaDeDescarte.size() != 0){
+                for(int i = 0; i < pilhaDeDescarte.size(); i++){
+                    pilhaDeCompra.add(pilhaDeDescarte.get(i));
+                    pilhaDeDescarte.remove(i);
+                }
+            } 
+        }    
     }
 
     public void descartar(Carta carta){

@@ -69,6 +69,8 @@ public class App {
 
             while (h.getTurno()) { // Turno do heroi
 
+                b.comprarCarta();
+
                 System.out.println("");
                 System.out.printf("%s (%d/50 de vida) (%d de escudo) (%d/6 de energia)\n", h.getNome(), h.getVida(), h.getEscudo(), h.getEnergia());
                 System.out.println("vs");
