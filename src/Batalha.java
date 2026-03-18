@@ -2,28 +2,28 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Batalha {
-    public void rodarBatalha(Baralho b, heroi h, inimigo i, Scanner scanner){
+    public void rodarBatalha(Baralho baralho, heroi heroi, inimigo inimigo, Scanner scanner){
         int defesaInimigo = 15;
         ponto_controle:
-        while (h.getVida() > 0 && i.getVida() > 0) {
+        while (heroi.getVida() > 0 && inimigo.getVida() > 0) {
 
-            h.setTurno(true);
-            h.setEscudo(0);
+            heroi.setTurno(true);
+            heroi.setEscudo(0);
 
-            while (h.getTurno()) { // Turno do heroi
+            while (heroi.getTurno()) { // Turno do heroi
 
-                b.comprarCarta();
+                baralho.comprarCarta();
 
-                imprimirMenu(b, h, i);
+                imprimirMenu(baralho, heroi, inimigo);
 
                 int escolha = scanner.nextInt();
 
 
-                if(escolha < b.getMao().size() && escolha >= 0){
-                    Carta cartaEscolida = b.getMao().get(escolha);
-                    if(h.getEnergia() >= cartaEscolida.getCusto()){
-                        cartaEscolida.usar(h, i);
-                        b.descartar(cartaEscolida);
+                if(escolha < baralho.getMao().size() && escolha >= 0){ // Opção escolida é uma carta na mão do jogador
+                    Carta cartaEscolida = baralho.getMao().get(escolha);
+                    if(heroi.getEnergia() >= cartaEscolida.getCusto()){ // Heroi tem energia para jogar a carta
+                        cartaEscolida.usar(heroi, inimigo);
+                        baralho.descartar(cartaEscolida);
                     }
                     else{
                         System.out.println("");
@@ -31,8 +31,8 @@ public class Batalha {
                     }
                     
                 }
-                if (escolha == b.getMao().size()){
-                    h.setTurno(false);
+                if (escolha == baralho.getMao().size()){ // Encerrar o turno
+                    heroi.setTurno(false);
                 }
                 else{
                     System.out.println("");
@@ -44,29 +44,29 @@ public class Batalha {
 
             Random random = new Random();
 
-            int acaoInimigo = random.nextInt(3);
+            int acaoInimigo = random.nextInt(3); // Sorteia um inteiro, 0, 1 ou 2
 
             switch (acaoInimigo) {
 
-                case 0:
+                case 0: // Ataca
 
-                    i.atacar(h);
+                    inimigo.atacar(heroi);
                     break;
 
-                case 1:
+                case 1: // Ganha escudo
 
-                    i.ganharEscudo(defesaInimigo);
+                    inimigo.ganharEscudo(defesaInimigo);
                     break;
 
-                case 2:
+                case 2: // Ataca e ganha escudo
 
-                    i.atacar(h);
-                    i.ganharEscudo(defesaInimigo);
+                    inimigo.atacar(heroi);
+                    inimigo.ganharEscudo(defesaInimigo);
                     break;
 
                 }
 
-                if (!h.estarVivo()) {
+                if (!heroi.estarVivo()) {  // Se o heroi morrer o jogo acaba
 
                     System.out.println("");
                     System.out.println("Que pena... Você perdeu o combate");
@@ -76,26 +76,26 @@ public class Batalha {
 
             // Entre rodadas
 
-            h.setEscudo(0);
-            h.ganharEnergia();
+            heroi.setEscudo(0);
+            heroi.ganharEnergia();
 
         }
         
     }
 
-    public void imprimirMenu(Baralho b, heroi h, inimigo i){
+    public void imprimirMenu(Baralho baralho, heroi heroi, inimigo inimigo){
         System.out.println("");
-                System.out.printf("%s (%d/50 de vida) (%d de escudo) (%d/6 de energia)\n", h.getNome(), h.getVida(), h.getEscudo(), h.getEnergia());
+                System.out.printf("%s (%d/50 de vida) (%d de escudo) (%d/6 de energia)\n", heroi.getNome(), heroi.getVida(), heroi.getEscudo(), heroi.getEnergia());
                 System.out.println("vs");
-                System.out.printf("%s (%d/30 de vida) (%d de escudo)\n", i.getNome(), i.getVida(), i.getEscudo());
+                System.out.printf("%s (%d/30 de vida) (%d de escudo)\n", inimigo.getNome(), inimigo.getVida(), inimigo.getEscudo());
                 System.out.println("");
                 System.out.println("Você pode: ");
                 System.out.println("");
-                for (int j = 0; j < b.getMao().size(); j++){
-                    System.out.printf("%d - usar %s", j, b.getMao().get(j).getNome());
+                for (int j = 0; j < baralho.getMao().size(); j++){
+                    System.out.printf("%d - usar %s", j, baralho.getMao().get(j).getNome());
                     System.out.println("");
                 }
-                System.out.printf("%d - Encerrar turno ", b.getMao().size());
+                System.out.printf("%d - Encerrar turno ", baralho.getMao().size());
                 System.out.println("");
                 System.out.println("Escolha: ");
                 System.out.println("");

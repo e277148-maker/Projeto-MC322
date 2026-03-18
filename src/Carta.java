@@ -31,7 +31,7 @@ public abstract class Carta {
         this.efeito = efeito;
     }
 
-    public abstract void usar(heroi nomeHeroi, inimigo nomeInimigo);
+    public abstract void usar(heroi heroi, inimigo inimigo);
 
     
 }

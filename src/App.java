@@ -7,42 +7,42 @@ public class App {
 
         // Inicializar cartas e entidades
 
-        heroi h = new heroi();
-        h.setVida(50);
-        h.setEscudo(0);
-        h.setEnergia(6);
+        heroi heroi = new heroi();
+        heroi.setVida(50);
+        heroi.setEscudo(0);
+        heroi.setEnergia(6);
 
-        inimigo i = new inimigo();
-        i.setNome("Goblin raivoso");
-        i.setVida(30);
-        i.setEscudo(0);
-        i.setAtaque(10);
+        inimigo inimigo = new inimigo();
+        inimigo.setNome("Goblin raivoso");
+        inimigo.setVida(30);
+        inimigo.setEscudo(0);
+        inimigo.setAtaque(10);
 
-        CartaDeDano d = new CartaDeDano();
-        d.setNome("Espada");
-        d.setCusto(2);
-        d.setEfeito(10);
+        CartaDeDano carta_espada = new CartaDeDano();
+        carta_espada.setNome("Espada");
+        carta_espada.setCusto(2);
+        carta_espada.setEfeito(10);
 
-        CartaEscudo e = new CartaEscudo();
-        e.setNome("Armadura");
-        e.setCusto(1);
-        e.setEfeito(15);
+        CartaEscudo carta_armadura = new CartaEscudo();
+        carta_armadura.setNome("Armadura");
+        carta_armadura.setCusto(1);
+        carta_armadura.setEfeito(15);
 
         // Criar baralho
 
-        Baralho b = new Baralho();
+        Baralho baralho = new Baralho();
 
         List<Carta> pilhaDeCompra = new ArrayList<>();
-        pilhaDeCompra.add(d);
-        pilhaDeCompra.add(e);
+        pilhaDeCompra.add(carta_espada);
+        pilhaDeCompra.add(carta_armadura);
 
         List<Carta> mao = new ArrayList<>();
         List<Carta> pilhaDeDescarte = new ArrayList<>();
         
 
-        b.setPilhaDeCompra(pilhaDeCompra);
-        b.setPilhaDeDescarte(pilhaDeDescarte);
-        b.setMao(mao);
+        baralho.setPilhaDeCompra(pilhaDeCompra);
+        baralho.setPilhaDeDescarte(pilhaDeDescarte);
+        baralho.setMao(mao);
 
 
         // Escolher o nome do heroi
@@ -53,7 +53,7 @@ public class App {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Comece escolhendo o nome de seu herói: ");
-        h.setNome(scanner.next());
+        heroi.setNome(scanner.next());
         System.out.println("");
         System.out.println("Boa sorte na batalha, você irá precisar! ");
         System.out.println("");
@@ -61,9 +61,9 @@ public class App {
         // Batalha
 
         Batalha batalha = new Batalha();
-        batalha.rodarBatalha(b, h, i, scanner);
+        batalha.rodarBatalha(baralho, heroi, inimigo, scanner);
 
-        scanner.close();
+        scanner.close(); // Fecha o scanner para evitar vazamento de memoria
 
     }
 }
