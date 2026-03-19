@@ -3,45 +3,44 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) throws Exception {
+        public static void main(String[] args) throws Exception {
 
-        // Inicializar cartas e entidades (com construtores)
+                // Inicializar cartas e entidades (com construtores)
 
-        Heroi heroi = new Heroi("", "", 50, 0);
+                Heroi heroi = new Heroi("", "", 50, 0);
+                Inimigo inimigo = new Inimigo("Goblin raivoso", "Parece inofensivo, até você se aproximar!", 30, 0, 10);
 
-//        heroi.setVida(50);
-//        heroi.setEscudo(0);
-//        heroi.setEnergia(6);
+                CartaDeDano carta_espada = new CartaDeDano("Espada", "Uma espada afiada que causa dano ao inimigo.", 2, 10);
+                CartaDeDano carta_machado = new CartaDeDano("Machado", "Um machado antigo pesado de manusear.", 4, 15);
+                CartaDeDano carta_cajado = new CartaDeDano("Cajado", "Um cajado mágico que causa dano elemental.", 3, 12);
+                CartaDeDano carta_adagas = new CartaDeDano("Adagas", "Uma par de adagas afiadas e ágeis.", 1, 8);
+                CartaDeDano carta_arco_flecha = new CartaDeDano("Arco e Flecha", "Um arco e flechas precisas que causam dano à distância.", 3, 11);
 
-        Inimigo inimigo = new Inimigo("Goblin raivoso", "Parece inofensivo, até você se aproximar!", 30, 0, 10);
-
-//        inimigo.setNome("Goblin raivoso");
-//        inimigo.setVida(30);
-//        inimigo.setEscudo(0);
-//        inimigo.setAtaque(10);
-
-        CartaDeDano carta_espada = new CartaDeDano("Espada", "Uma espada afiada que causa dano ao inimigo.", 2, 10);
-
-//        carta_espada.setNome("Espada");
-//        carta_espada.setCusto(2);
-//        carta_espada.setEfeito(10);
-
-        CartaEscudo carta_armadura = new CartaEscudo("Armadura", "Uma armadura resistente que aumenta sua defesa.", 1, 15);
-
-//        carta_armadura.setNome("Armadura");
-//        carta_armadura.setCusto(1);
-//        carta_armadura.setEfeito(15);
+                CartaEscudo carta_armadura = new CartaEscudo("Armadura", "Uma armadura resistente que aumenta sua defesa.", 3, 15);
+                CartaEscudo carta_escudo_madeira = new CartaEscudo("Escudo de Madeira", "Um escudo de madeira que aumenta sua defesa.", 2, 10);
+                CartaEscudo carta_escudo = new CartaEscudo("Escudo", "Um escudo simples que aumenta sua defesa.", 1, 5);
+                CartaEscudo carta_feitico_protecao = new CartaEscudo("Feitiço de Proteção", "Um feitiço que cria um escudo mágico em torno do herói.", 5, 20);
+                CartaEscudo carta_armadura = new CartaEscudo("Armadura", "Uma armadura resistente que aumenta sua defesa.", 1, 15);
 
         // Criar listas e depois o prórprio baralho
 
-        List<Carta> pilhaDeCompra = new ArrayList<>();
-        pilhaDeCompra.add(carta_espada);
-        pilhaDeCompra.add(carta_armadura);
+                List<Carta> pilhaDeCompra = new ArrayList<>();
 
-        List<Carta> mao = new ArrayList<>();
-        List<Carta> pilhaDeDescarte = new ArrayList<>();
+                pilhaDeCompra.add(carta_espada);
+                pilhaDeCompra.add(carta_machado);
+                pilhaDeCompra.add(carta_cajado);
+                pilhaDeCompra.add(carta_adagas);
+                pilhaDeCompra.add(carta_arco_flecha);
 
-        Baralho baralho = new Baralho(pilhaDeCompra, pilhaDeDescarte, mao);
+                pilhaDeCompra.add(carta_armadura);
+                pilhaDeCompra.add(carta_armadura);
+                pilhaDeCompra.add(carta_armadura);
+                pilhaDeCompra.add(carta_armadura);
+
+                List<Carta> mao = new ArrayList<>();
+                List<Carta> pilhaDeDescarte = new ArrayList<>();
+
+                Baralho baralho = new Baralho(pilhaDeCompra, pilhaDeDescarte, mao);
 
 //        baralho.setPilhaDeCompra(pilhaDeCompra);
 //        baralho.setPilhaDeDescarte(pilhaDeDescarte);
@@ -49,23 +48,23 @@ public class App {
 
         // Escolher o nome do heroi
 
-        System.out.println("");
-        System.out.println("Olá jogador! Seja bem vindo e se prepare para a jornada...");
-        System.out.println("");
+                System.out.println("");
+                System.out.println("Olá jogador! Seja bem vindo e se prepare para a jornada...");
+                System.out.println("");
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Comece escolhendo o nome de seu herói: ");
-        heroi.setNome(scanner.next());
-        System.out.println("");
-        System.out.println("Boa sorte na batalha, você irá precisar! ");
-        System.out.println("");
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Comece escolhendo o nome de seu herói: ");
+                heroi.setNome(scanner.next());
+                System.out.println("");
+                System.out.println("Boa sorte na batalha, você irá precisar! ");
+                System.out.println("");
 
-        // Batalha
+                // Batalha
 
-        Batalha batalha = new Batalha();
-        batalha.rodarBatalha(baralho, heroi, inimigo, scanner);
+                Batalha batalha = new Batalha();
+                batalha.rodarBatalha(baralho, heroi, inimigo, scanner);
 
-        scanner.close(); // Fecha o scanner para evitar vazamento de memoria
+                scanner.close(); // Fecha o scanner para evitar vazamento de memoria
 
-    }
+        }
 }

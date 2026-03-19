@@ -12,6 +12,7 @@ public class Batalha {
 
             heroi.setTurno(true);
             heroi.setEscudo(0);
+            heroi.setEnergia(6);
 
             while (heroi.getTurno()) { // Turno do heroi
 
