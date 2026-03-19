@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws Exception {
 
-        // Inicializar cartas e entidades
+        // Inicializar cartas e entidades (com construtores)
 
         Heroi heroi = new Heroi("", "", 50, 0);
 
