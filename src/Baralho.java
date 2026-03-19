@@ -1,5 +1,5 @@
 import java.util.List;
-import java.util.Random;
+import java.util.Collections;
 
 public class Baralho {
 
@@ -48,24 +48,27 @@ public class Baralho {
 
     public void comprarCarta(){
 
-        if (pilhaDeCompra.size() != 0){
+        if (pilhaDeCompra.isEmpty()) {
+            if (!pilhaDeDescarte.isEmpty()) {
 
-            Random random = new Random();
-            int indice = random.nextInt(pilhaDeCompra.size());
-            mao.add(pilhaDeCompra.get(indice));
-            pilhaDeCompra.remove(indice);
+            pilhaDeCompra.addAll(pilhaDeDescarte);
+            pilhaDeDescarte.clear();
 
-            if(pilhaDeCompra.size() == 0 && pilhaDeDescarte.size() != 0){
+            Collections.shuffle(pilhaDeCompra);
 
-                for(int i = 0; i < pilhaDeDescarte.size(); i++){
+            } else {
+                return; // Não há cartas para comprar
+            }
+        }
 
-                    pilhaDeCompra.add(pilhaDeDescarte.get(i));
-                    pilhaDeDescarte.remove(i);
+        if (!pilhaDeCompra.isEmpty()) {
 
-                }
-            } 
-        }    
-    }
+            Carta cartaComprada = pilhaDeCompra.remove(0);
+            mao.add(cartaComprada);
+
+        }
+
+    }    
 
     public void descartar(Carta carta){
 

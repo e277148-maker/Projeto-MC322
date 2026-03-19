@@ -20,9 +20,9 @@ public class App {
                 CartaEscudo carta_escudo_madeira = new CartaEscudo("Escudo de Madeira", "Um escudo de madeira que aumenta sua defesa.", 2, 10);
                 CartaEscudo carta_escudo = new CartaEscudo("Escudo", "Um escudo simples que aumenta sua defesa.", 1, 5);
                 CartaEscudo carta_feitico_protecao = new CartaEscudo("Feitiço de Proteção", "Um feitiço que cria um escudo mágico em torno do herói.", 5, 20);
-                CartaEscudo carta_armadura = new CartaEscudo("Armadura", "Uma armadura resistente que aumenta sua defesa.", 1, 15);
+                CartaEscudo carta_soro_resistencia = new CartaEscudo("Soro de Resistência", "Um soro que aumenta a resistência do herói.", 2, 10);
 
-        // Criar listas e depois o prórprio baralho
+                // Criar listas e depois o prórprio baralho
 
                 List<Carta> pilhaDeCompra = new ArrayList<>();
 
@@ -33,20 +33,17 @@ public class App {
                 pilhaDeCompra.add(carta_arco_flecha);
 
                 pilhaDeCompra.add(carta_armadura);
-                pilhaDeCompra.add(carta_armadura);
-                pilhaDeCompra.add(carta_armadura);
-                pilhaDeCompra.add(carta_armadura);
+                pilhaDeCompra.add(carta_escudo_madeira);
+                pilhaDeCompra.add(carta_escudo);
+                pilhaDeCompra.add(carta_feitico_protecao);
+                pilhaDeCompra.add(carta_soro_resistencia);
 
                 List<Carta> mao = new ArrayList<>();
                 List<Carta> pilhaDeDescarte = new ArrayList<>();
 
                 Baralho baralho = new Baralho(pilhaDeCompra, pilhaDeDescarte, mao);
 
-//        baralho.setPilhaDeCompra(pilhaDeCompra);
-//        baralho.setPilhaDeDescarte(pilhaDeDescarte);
-//        baralho.setMao(mao);
-
-        // Escolher o nome do heroi
+                // Escolher o nome do heroi
 
                 System.out.println("");
                 System.out.println("Olá jogador! Seja bem vindo e se prepare para a jornada...");

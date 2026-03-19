@@ -16,7 +16,9 @@ public class Batalha {
 
             while (heroi.getTurno()) { // Turno do heroi
 
-                baralho.comprarCarta();
+                while (baralho.getMao().size() < 5 && (!baralho.getPilhaDeCompras().isEmpty() || !baralho.getPilhaDeDescarte().isEmpty())) {
+                    baralho.comprarCarta();
+                }
 
                 imprimirMenu(baralho, heroi, inimigo);
 
@@ -36,10 +38,10 @@ public class Batalha {
                     }
                     
                 }
-                if (escolha == baralho.getMao().size()){ // Encerrar o turno
+                else if (escolha == baralho.getMao().size()){ // Encerrar o turno
                     heroi.setTurno(false);
                 }
-                else{
+                else {
                     System.out.println("");
                     System.out.println("Escolha invalida, tente novamente");
                 }
@@ -82,7 +84,7 @@ public class Batalha {
             // Entre rodadas
 
             heroi.setEscudo(0);
-            heroi.ganharEnergia();
+            heroi.setEnergia(6);
 
         }
         
