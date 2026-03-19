@@ -2,9 +2,19 @@ import java.util.List;
 import java.util.Random;
 
 public class Baralho {
+
     private List <Carta> pilhaDeCompra;
     private List <Carta> pilhaDeDescarte;
     private List <Carta> mao;
+
+    // Construtor
+    public Baralho(List <Carta> pilhaDeCompra, List <Carta> pilhaDeDescarte, List <Carta> mao){
+
+        this.pilhaDeCompra = pilhaDeCompra;
+        this.pilhaDeDescarte = pilhaDeDescarte;
+        this.mao = mao;
+
+    }
 
     // Getters
 
@@ -37,32 +47,44 @@ public class Baralho {
     // Outros metodos
 
     public void comprarCarta(){
+
         if (pilhaDeCompra.size() != 0){
+
             Random random = new Random();
             int indice = random.nextInt(pilhaDeCompra.size());
             mao.add(pilhaDeCompra.get(indice));
             pilhaDeCompra.remove(indice);
+
             if(pilhaDeCompra.size() == 0 && pilhaDeDescarte.size() != 0){
+
                 for(int i = 0; i < pilhaDeDescarte.size(); i++){
+
                     pilhaDeCompra.add(pilhaDeDescarte.get(i));
                     pilhaDeDescarte.remove(i);
+
                 }
             } 
         }    
     }
 
     public void descartar(Carta carta){
+
         int indice = mao.indexOf(carta);
         pilhaDeDescarte.add(carta);
         mao.remove(indice);
+
     }
 
     public void imprimirMao(){
+
         System.out.println("Sua mão: ");
+
         for (int i = 0; i < mao.size(); i++){
+
             System.out.print(i + 1);
             System.out.print("- ");
             System.out.println(mao.get(i).getNome());
+
         }
     }
 

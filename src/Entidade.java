@@ -1,7 +1,23 @@
+// Superclasse para representar uma entidade genérica no jogo, como um jogador ou um inimigo
+
 public class Entidade {
+
+    // Atributos
     private String nome;
+    private String descricao;
     private int vida;
     private int escudo;
+
+    // Construtor
+    public Entidade(String nome, String descricao, int vida, int escudo) {
+
+        this.nome = nome;
+        this.descricao = descricao;
+
+        this.vida = vida;
+        this.escudo = escudo;
+
+    }
 
     // Getters
 
@@ -16,6 +32,10 @@ public class Entidade {
         return escudo;
     }
 
+    public String getDescricao(){
+        return descricao;
+    }
+
     // Setters
 
     public void setNome(String nome){
@@ -28,6 +48,10 @@ public class Entidade {
 
     public void setEscudo(int escudo){
         this.escudo = escudo;
+    }
+
+    public void setDescricao(String descricao){
+        this.descricao = descricao;
     }
 
     // Outros metodos
@@ -62,12 +86,16 @@ public class Entidade {
     void ganharEscudo(int defesa){
         escudo += defesa;
     }
+
     boolean estarVivo(){
+
         if (vida > 0){
             return true;
         }
+
         else{
             return false;
         }
+
     }
 }

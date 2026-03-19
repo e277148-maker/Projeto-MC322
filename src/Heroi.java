@@ -1,9 +1,18 @@
+// Subclasse para representar o herói do jogo, que é um tipo específico de entidade
 
-
-public class heroi extends Entidade{
+public class Heroi extends Entidade {
 
     private int energia;
     private boolean turno;
+
+    // Construtor
+    public Heroi(String nome, String descricao, int vida, int escudo) {
+
+        super(nome, descricao, vida, escudo);
+        this.energia = 6;
+        this.turno = false;
+
+    }
 
     // Getters
 
@@ -32,11 +41,15 @@ public class heroi extends Entidade{
     }
 
     void ganharEnergia(){
+
         if (energia <= 4){
             energia += 2;
         }
+
         if (energia == 5){
             energia++;
+
         }   
+
     }
 }

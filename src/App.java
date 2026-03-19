@@ -7,30 +7,32 @@ public class App {
 
         // Inicializar cartas e entidades
 
-        heroi heroi = new heroi();
-        heroi.setVida(50);
-        heroi.setEscudo(0);
-        heroi.setEnergia(6);
+        Heroi heroi = new Heroi("", "", 50, 0);
 
-        inimigo inimigo = new inimigo();
-        inimigo.setNome("Goblin raivoso");
-        inimigo.setVida(30);
-        inimigo.setEscudo(0);
-        inimigo.setAtaque(10);
+//        heroi.setVida(50);
+//        heroi.setEscudo(0);
+//        heroi.setEnergia(6);
 
-        CartaDeDano carta_espada = new CartaDeDano();
-        carta_espada.setNome("Espada");
-        carta_espada.setCusto(2);
-        carta_espada.setEfeito(10);
+        Inimigo inimigo = new Inimigo("Goblin raivoso", "Parece inofensivo, até você se aproximar!", 30, 0, 10);
 
-        CartaEscudo carta_armadura = new CartaEscudo();
-        carta_armadura.setNome("Armadura");
-        carta_armadura.setCusto(1);
-        carta_armadura.setEfeito(15);
+//        inimigo.setNome("Goblin raivoso");
+//        inimigo.setVida(30);
+//        inimigo.setEscudo(0);
+//        inimigo.setAtaque(10);
 
-        // Criar baralho
+        CartaDeDano carta_espada = new CartaDeDano("Espada", "Uma espada afiada que causa dano ao inimigo.", 2, 10);
 
-        Baralho baralho = new Baralho();
+//        carta_espada.setNome("Espada");
+//        carta_espada.setCusto(2);
+//        carta_espada.setEfeito(10);
+
+        CartaEscudo carta_armadura = new CartaEscudo("Armadura", "Uma armadura resistente que aumenta sua defesa.", 1, 15);
+
+//        carta_armadura.setNome("Armadura");
+//        carta_armadura.setCusto(1);
+//        carta_armadura.setEfeito(15);
+
+        // Criar listas e depois o prórprio baralho
 
         List<Carta> pilhaDeCompra = new ArrayList<>();
         pilhaDeCompra.add(carta_espada);
@@ -38,12 +40,12 @@ public class App {
 
         List<Carta> mao = new ArrayList<>();
         List<Carta> pilhaDeDescarte = new ArrayList<>();
-        
 
-        baralho.setPilhaDeCompra(pilhaDeCompra);
-        baralho.setPilhaDeDescarte(pilhaDeDescarte);
-        baralho.setMao(mao);
+        Baralho baralho = new Baralho(pilhaDeCompra, pilhaDeDescarte, mao);
 
+//        baralho.setPilhaDeCompra(pilhaDeCompra);
+//        baralho.setPilhaDeDescarte(pilhaDeDescarte);
+//        baralho.setMao(mao);
 
         // Escolher o nome do heroi
 
