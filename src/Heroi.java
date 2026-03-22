@@ -40,6 +40,8 @@ public class Heroi extends Entidade {
         energia = energia - gasto;
     }
 
+    /*
+
     void ganharEnergia(){
 
         if (energia <= 4){
@@ -52,4 +54,7 @@ public class Heroi extends Entidade {
         }   
 
     }
+
+    */
+
 }

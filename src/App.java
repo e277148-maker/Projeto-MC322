@@ -1,3 +1,5 @@
+// Importações das classes necessárias para o funcionamento do jogo
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -51,12 +53,13 @@ public class App {
 
                 Scanner scanner = new Scanner(System.in);
                 System.out.println("Comece escolhendo o nome de seu herói: ");
+                System.out.println("");
                 heroi.setNome(scanner.next());
                 System.out.println("");
                 System.out.println("Boa sorte na batalha, você irá precisar! ");
                 System.out.println("");
 
-                // Batalha
+                // Inicialização da batalha
 
                 Batalha batalha = new Batalha();
                 batalha.rodarBatalha(baralho, heroi, inimigo, scanner);

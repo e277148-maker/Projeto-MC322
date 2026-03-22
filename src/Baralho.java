@@ -3,6 +3,7 @@ import java.util.Collections;
 
 public class Baralho {
 
+    // Cria as listas para o baralho, descarte e mão do jogador
     private List <Carta> pilhaDeCompra;
     private List <Carta> pilhaDeDescarte;
     private List <Carta> mao;

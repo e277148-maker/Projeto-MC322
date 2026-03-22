@@ -53,6 +53,7 @@ public abstract class Carta {
         this.efeito = efeito;
     }
 
+    // Método abstrato para usar a carta, que será implementado nas classes filhas
     public abstract void usar(Heroi heroi, Inimigo inimigo);
 
     

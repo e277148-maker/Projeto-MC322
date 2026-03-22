@@ -7,7 +7,7 @@ public class CartaDeDano extends Carta {
 
     }
     
-
+    //Sobrescreve o método usar da classe Carta, aplicando o dano ao inimigo e reduzindo a energia do heroi
     @Override
     public void usar(Heroi heroi, Inimigo inimigo){
 
