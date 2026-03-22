@@ -9,8 +9,16 @@ O herói começa com 50 de vida e 6 de energia por turno, já o inimigo começa 
 **Cartas disponíveis:**
 
 - Espada (custo 2): causa 10 de dano ao inimigo
+- Machado (custo 4): causa 15 de dano ao inimigo
+- Cajado (custo 3): causa 12 de dano ao inimigo
+- Adagas (custo 1): causa 8 de dano ao inimigo
+- Arco e flecha (custo 3): causa 11 de dano ao inimigo
 
-- Armadura (custo 1): adiciona 15 de escudo ao herói
+- Armadura (custo 3): adiciona 15 de escudo ao herói
+- Escudo de madeira (custo 2): adiciona 10 de escudo ao herói
+- Escudo (custo 1): adiciona 5 de escudo ao herói
+- Feitiço proteção (custo 5): adiciona 20 de escudo ao herói
+- Soro de resistência (custo 2): adiciona 10 de escudo ao herói
 
 ## Compilação e execução
 
