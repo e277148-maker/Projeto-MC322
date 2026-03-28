@@ -1,4 +1,9 @@
+package entidades;
 // Subclasse para representar o herói do jogo, que é um tipo específico de entidade
+
+import java.util.List;
+
+import efeitos.Efeito;
 
 public class Heroi extends Entidade {
 
@@ -6,12 +11,11 @@ public class Heroi extends Entidade {
     private boolean turno;
 
     // Construtor
-    public Heroi(String nome, String descricao, int vida, int escudo) {
-
-        super(nome, descricao, vida, escudo);
-        this.energia = 6;
-        this.turno = false;
-
+    public Heroi(String nome, String descricao, int vida, int escudo, List<Efeito> efeitos, int energia,
+            boolean turno) {
+        super(nome, descricao, vida, escudo, efeitos);
+        this.energia = energia;
+        this.turno = turno;
     }
 
     // Getters
@@ -36,25 +40,8 @@ public class Heroi extends Entidade {
     
     // Outros metodos
 
-    void perderEnergia(int gasto){
+    public void perderEnergia(int gasto){
         energia = energia - gasto;
     }
-
-    /*
-
-    void ganharEnergia(){
-
-        if (energia <= 4){
-            energia += 2;
-        }
-
-        if (energia == 5){
-            energia++;
-
-        }   
-
-    }
-
-    */
 
 }

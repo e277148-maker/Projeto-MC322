@@ -4,13 +4,34 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import batalhas.*;
+import cartas.*;
+import efeitos.Efeito;
+import entidades.*;
+import baralho.*;
+
 public class App {
         public static void main(String[] args) throws Exception {
+                // Criar eventos
 
-                // Inicializar cartas e entidades (com construtores)
+                Evento fimDeTurnoHeroi = new Evento("fimDeTurnoHeroi"); 
+                Evento fimDeTurnoInimigo = new Evento("fimDeTurnoInimigo");
 
-                Heroi heroi = new Heroi("", "", 50, 0);
-                Inimigo inimigo = new Inimigo("Goblin raivoso", "Parece inofensivo, até você se aproximar!", 30, 0, 10);
+                // Criar lista de eventos
+                List <Evento> eventos = new ArrayList<>();
+                eventos.add(fimDeTurnoHeroi); // Indice 0 na lista de eventos
+                eventos.add(fimDeTurnoInimigo); // Indice 1 na lista de eventos
+
+                // Criar batalha
+                List <Efeito> subscribersEfeito = new ArrayList<>();
+
+                Batalha batalha = new Batalha(subscribersEfeito, eventos);
+
+                // Inicializar cartas, entidades e eventos(com construtores)
+                List <Efeito> efeitos = new ArrayList<>();
+
+                Heroi heroi = new Heroi("", "", 50, 0, efeitos,0, false);
+                Inimigo inimigo = new Inimigo("Goblin raivoso", "Parece inofensivo, até você se aproximar!", 30, 0, efeitos, 15, batalha, 3, 5, eventos);
 
                 CartaDeDano carta_espada = new CartaDeDano("Espada", "Uma espada afiada que causa dano ao inimigo.", 2, 10);
                 CartaDeDano carta_machado = new CartaDeDano("Machado", "Um machado antigo pesado de manusear.", 4, 15);
@@ -23,6 +44,9 @@ public class App {
                 CartaEscudo carta_escudo = new CartaEscudo("Escudo", "Um escudo simples que aumenta sua defesa.", 1, 5);
                 CartaEscudo carta_feitico_protecao = new CartaEscudo("Feitiço de Proteção", "Um feitiço que cria um escudo mágico em torno do herói.", 5, 20);
                 CartaEscudo carta_soro_resistencia = new CartaEscudo("Soro de Resistência", "Um soro que aumenta a resistência do herói.", 2, 10);
+                
+                CartaDeVeneno carta_frasco_envenenado = new CartaDeVeneno("Frasco Envenenado", "Um frasco que envenena o inimigo", 4, 20, 3, fimDeTurnoInimigo, batalha);
+
 
                 // Criar listas e depois o prórprio baralho
 
@@ -39,6 +63,8 @@ public class App {
                 pilhaDeCompra.add(carta_escudo);
                 pilhaDeCompra.add(carta_feitico_protecao);
                 pilhaDeCompra.add(carta_soro_resistencia);
+
+                pilhaDeCompra.add(carta_frasco_envenenado);
 
                 List<Carta> mao = new ArrayList<>();
                 List<Carta> pilhaDeDescarte = new ArrayList<>();
@@ -61,7 +87,7 @@ public class App {
 
                 // Inicialização da batalha
 
-                Batalha batalha = new Batalha();
+
                 batalha.rodarBatalha(baralho, heroi, inimigo, scanner);
 
                 scanner.close(); // Fecha o scanner para evitar vazamento de memoria

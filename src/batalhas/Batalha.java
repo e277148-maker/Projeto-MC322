@@ -1,7 +1,27 @@
+package batalhas;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.List;
+import efeitos.*;
+import cartas.*;
+import entidades.*;
+import baralho.*;
 
 public class Batalha {
+    // Atributos
+    private List <Efeito> subscribersEfeito;
+    private List <Evento> eventos;
+
+    // Metodos
+
+
+    // Constructor
+    public Batalha(List<Efeito> subscribersEfeito, List<Evento> eventos) {
+        this.subscribersEfeito = subscribersEfeito;
+        this.eventos = eventos;
+    }
+
+ 
 
     public void rodarBatalha(Baralho baralho, Heroi heroi, Inimigo inimigo, Scanner scanner){
 
@@ -42,6 +62,7 @@ public class Batalha {
                 }
                 else if (escolha == baralho.getMao().size()){ // Encerrar o turno
                     heroi.setTurno(false);
+                    notificarEfeito(subscribersEfeito, eventos.get(0));
                 }
                 else {
                     System.out.println("");
@@ -51,29 +72,44 @@ public class Batalha {
             }
             // Turno do inimigo
 
-            Random random = new Random();
+            if (inimigo.getVida() > 0){
 
-            int acaoInimigo = random.nextInt(3); // Sorteia um inteiro, 0, 1 ou 2
+                Random random = new Random();
 
-            switch (acaoInimigo) {
+                int acaoInimigo = random.nextInt(3); // Sorteia um inteiro, 0, 1 ou 2
 
-                case 0: // Ataca
+                switch (acaoInimigo) {
 
-                    inimigo.atacar(heroi);
-                    break;
+                    case 0: // Ataca
 
-                case 1: // Ganha escudo
+                        inimigo.atacar(heroi);
+                        System.out.println("Inimigo atacou");
+                        break;
 
-                    inimigo.ganharEscudo(defesaInimigo);
-                    break;
+                    case 1: // Ganha escudo
 
-                case 2: // Ataca e ganha escudo
+                        inimigo.ganharEscudo(defesaInimigo);
+                        System.out.println("Inimigo ganhou escudo");
+                        break;
 
-                    inimigo.atacar(heroi);
-                    inimigo.ganharEscudo(defesaInimigo);
-                    break;
+                    case 2: // Ataca e ganha escudo
+
+                        inimigo.atacar(heroi);
+                        inimigo.ganharEscudo(defesaInimigo);
+                        System.out.println("Inimigo atacou e ganhou escudo");
+                        break;
+
+                    case 3: // Usar veneno
+                        System.out.println("Inimigo envenenou heroi");
+                        inimigo.envenenar(heroi);
+
 
                 }
+            }
+            // Fim do turno do inimigo
+
+            notificarEfeito(subscribersEfeito, eventos.get(1));
+
 
                 if (!heroi.estarVivo()) {  // Se o heroi morrer o jogo acaba
 
@@ -116,6 +152,59 @@ public class Batalha {
         System.out.println("");
 
     }
+
+    // Metodos do publisher
+
+    private void inscreverEfeito(Efeito efeito){
+        subscribersEfeito.add(efeito);
+    }
+    
+    private void desinscreverEfeito(Efeito efeito){
+        subscribersEfeito.remove(efeito);
+    }
+
+    private void notificarEfeito(List <Efeito> subscribersEfeito, Evento evento){
+        for (int i = 0; i < subscribersEfeito.size(); i++){
+            Efeito efeito = subscribersEfeito.get(i);
+            if (efeito.getEvento() == evento){
+                efeito.serNotificado();
+            }
+            
+        }
+        
+    }
+
+    // Metodos do subscriber
+
+    public void serNotificadoAcumulo(Efeito efeito){
+        desinscreverEfeito(efeito);
+    }
+
+    public void serNotificadoCriacaoEfeito(Efeito efeito){
+        inscreverEfeito(efeito);
+    }
+
+    // Getters
+
+    public List<Evento> getEventos() {
+        return eventos;
+    }
+    
+    public List<Efeito> getSubscribersEfeito() {
+        return subscribersEfeito;
+    }
+
+    // Setters
+
+    public void setEventos(List<Evento> eventos) {
+        this.eventos = eventos;
+    }
+
+    public void setSubscribersEfeito(List<Efeito> subscribersEfeito) {
+        this.subscribersEfeito = subscribersEfeito;
+    }
+
+    
 
 
 }

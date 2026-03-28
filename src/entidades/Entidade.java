@@ -1,3 +1,6 @@
+package entidades;
+import efeitos.*;
+import java.util.List;
 // Superclasse para representar uma entidade genérica no jogo, como um jogador ou um inimigo
 
 public class Entidade {
@@ -7,16 +10,15 @@ public class Entidade {
     private String descricao;
     private int vida;
     private int escudo;
+    private List <Efeito> efeitos;
 
     // Construtor
-    public Entidade(String nome, String descricao, int vida, int escudo) {
-
+    public Entidade(String nome, String descricao, int vida, int escudo, List<Efeito> efeitos) {
         this.nome = nome;
         this.descricao = descricao;
-
         this.vida = vida;
         this.escudo = escudo;
-
+        this.efeitos = efeitos;
     }
 
     // Getters
@@ -34,6 +36,10 @@ public class Entidade {
 
     public String getDescricao(){
         return descricao;
+    }
+    
+    public List<Efeito> getEfeitos() {
+        return efeitos;
     }
 
     // Setters
@@ -53,10 +59,14 @@ public class Entidade {
     public void setDescricao(String descricao){
         this.descricao = descricao;
     }
+    
+    public void setEfeitos(List<Efeito> efeitos) {
+        this.efeitos = efeitos;
+    }
 
     // Outros metodos
 
-    void receberDano(int dano){
+    public void receberDano(int dano){
 
         int danoReal = dano - escudo;  // Escudo reduz o dano
 
@@ -83,11 +93,11 @@ public class Entidade {
 
     }
 
-    void ganharEscudo(int defesa){
+    public void ganharEscudo(int defesa){
         escudo += defesa;
     }
 
-    boolean estarVivo(){
+    public boolean estarVivo(){
 
         if (vida > 0){
             return true;
@@ -98,4 +108,12 @@ public class Entidade {
         }
 
     }
+
+    protected void aplicarEfeito(Efeito efeito){
+        efeitos.add(efeito);
+    }
+
+    
+
+    
 }
