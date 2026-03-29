@@ -76,7 +76,7 @@ public class Batalha {
 
                 Random random = new Random();
 
-                int acaoInimigo = random.nextInt(3); // Sorteia um inteiro, 0, 1 ou 2
+                int acaoInimigo = random.nextInt(4); // Sorteia um inteiro, 0, 1 ou 2
 
                 switch (acaoInimigo) {
 
@@ -89,19 +89,25 @@ public class Batalha {
                     case 1: // Ganha escudo
 
                         inimigo.ganharEscudo(defesaInimigo);
-                        System.out.println("Inimigo ganhou escudo");
+                        System.out.printf("%s ganhou escudo\n", inimigo.getNome());
                         break;
 
                     case 2: // Ataca e ganha escudo
 
                         inimigo.atacar(heroi);
                         inimigo.ganharEscudo(defesaInimigo);
-                        System.out.println("Inimigo atacou e ganhou escudo");
+                        System.out.printf("%s atacou e ganhou escudo\n", inimigo.getNome());
                         break;
 
                     case 3: // Usar veneno
-                        System.out.println("Inimigo envenenou heroi");
+                        System.out.printf("%s envenenou heroi\n", inimigo.getNome());
                         inimigo.envenenar(heroi);
+                        break;
+                    
+                    case 4: // Usar cura
+                        System.out.printf("%s usou cura\n", inimigo.getNome());
+                        inimigo.curar(inimigo);
+                        break;
 
 
                 }

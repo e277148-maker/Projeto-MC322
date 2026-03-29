@@ -10,17 +10,19 @@ public abstract class Efeito {
     private int acumulo;
     private int efeito;
     private Evento evento;
+    private Batalha batalha;
 
     
 
     // Constructors
 
-    public Efeito(String nome, Entidade dono, int acumulo, int efeito, Evento evento) {
+    public Efeito(String nome, Entidade dono, int acumulo, int efeito, Evento evento, Batalha batalha) {
             this.nome = nome;
             this.dono = dono;
             this.acumulo = acumulo;
             this.efeito = efeito;
             this.evento = evento;
+            this.batalha = batalha;
         }
 
     // Getters
@@ -44,6 +46,10 @@ public abstract class Efeito {
         return evento;
     }
     
+    public Batalha getBatalha() {
+        return batalha;
+    }
+    
     // Setters
     
     public void setNome(String nome) {
@@ -65,6 +71,10 @@ public abstract class Efeito {
     public void setEvento(Evento evento) {
         this.evento = evento;
     }
+    
+    public void setBatalha(Batalha batalha) {
+        this.batalha = batalha;
+    }
 
     // Outros metodos
 
@@ -76,7 +86,9 @@ public abstract class Efeito {
     public void serNotificado(){
         aplicarEfeito();
         acumulo--;
-        checarAcumulo();
+        if (acumulo == 0){
+            notificarAcumulo(this, batalha);
+        }
     }
 
     // Metodos do Publisher
@@ -85,14 +97,12 @@ public abstract class Efeito {
         batalha.serNotificadoAcumulo(efeito);
     }
     
+    // Outros metodos
+    protected abstract void aplicarEfeito();
 
-    protected abstract void aplicarEfeito(); // Ver se deve ser protected mesmo (Apagar esse comentario depois de checar)
+    
 
-    private void checarAcumulo(){
-            if (acumulo == 0){
-                notificarAcumulo(null, null);
-            }
-        }
+    
 
 
 

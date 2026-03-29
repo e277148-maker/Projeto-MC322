@@ -3,6 +3,8 @@ import efeitos.*;
 import java.util.List;
 // Superclasse para representar uma entidade genérica no jogo, como um jogador ou um inimigo
 
+import batalhas.Batalha;
+
 public class Entidade {
 
     // Atributos
@@ -11,14 +13,18 @@ public class Entidade {
     private int vida;
     private int escudo;
     private List <Efeito> efeitos;
+    private int vidaMaxima;
+    private Batalha batalha;
 
     // Construtor
-    public Entidade(String nome, String descricao, int vida, int escudo, List<Efeito> efeitos) {
+    public Entidade(String nome, String descricao, int vida, int escudo, List<Efeito> efeitos, int vidaMaxima, Batalha batalha) {
         this.nome = nome;
         this.descricao = descricao;
         this.vida = vida;
         this.escudo = escudo;
         this.efeitos = efeitos;
+        this.vidaMaxima = vidaMaxima;
+        this.batalha = batalha;
     }
 
     // Getters
@@ -41,6 +47,14 @@ public class Entidade {
     public List<Efeito> getEfeitos() {
         return efeitos;
     }
+    
+    public int getVidaMaxima() {
+        return vidaMaxima;
+    }
+    
+    public Batalha getBatalha() {
+        return batalha;
+    }
 
     // Setters
 
@@ -62,6 +76,14 @@ public class Entidade {
     
     public void setEfeitos(List<Efeito> efeitos) {
         this.efeitos = efeitos;
+    }
+    
+    public void setVidaMaxima(int vidaMaxima) {
+        this.vidaMaxima = vidaMaxima;
+    }
+    
+    public void setBatalha(Batalha batalha) {
+        this.batalha = batalha;
     }
 
     // Outros metodos
@@ -112,6 +134,14 @@ public class Entidade {
     protected void aplicarEfeito(Efeito efeito){
         efeitos.add(efeito);
     }
+
+    
+
+    
+
+    
+
+    
 
     
 

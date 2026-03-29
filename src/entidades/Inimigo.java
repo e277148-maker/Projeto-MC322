@@ -5,23 +5,24 @@ import java.util.List;
 
 import batalhas.Batalha;
 import batalhas.Evento;
+import efeitos.Cura;
 import efeitos.Efeito;
 import efeitos.Veneno;
 
 public class Inimigo extends Entidade{
 
     private int dano_ataque;
-    private Batalha batalha;
     private int duraçaoEfeito;
     private int danoEfeito;
     private List <Evento> eventos;
 
+    
+
     // Construtor
-    public Inimigo(String nome, String descricao, int vida, int escudo, List<Efeito> efeitos, int dano_ataque,
-            Batalha batalha, int duraçaoEfeito, int danoEfeito, List<Evento> eventos) {
-        super(nome, descricao, vida, escudo, efeitos);
+    public Inimigo(String nome, String descricao, int vida, int escudo, List<Efeito> efeitos, int vidaMaxima,
+            int dano_ataque, Batalha batalha, int duraçaoEfeito, int danoEfeito, List<Evento> eventos) {
+        super(nome, descricao, vida, escudo, efeitos, vidaMaxima, batalha);
         this.dano_ataque = dano_ataque;
-        this.batalha = batalha;
         this.duraçaoEfeito = duraçaoEfeito;
         this.danoEfeito = danoEfeito;
         this.eventos = eventos;
@@ -34,10 +35,6 @@ public class Inimigo extends Entidade{
     
     public int getDano_ataque() {
         return dano_ataque;
-    }
-
-    public Batalha getBatalha() {
-        return batalha;
     }
 
     public int getDuraçaoEfeito() {
@@ -63,10 +60,6 @@ public class Inimigo extends Entidade{
         this.dano_ataque = dano_ataque;
     }
     
-    public void setBatalha(Batalha batalha) {
-        this.batalha = batalha;
-    }
-    
     public void setDuraçaoEfeito(int duraçaoEfeito) {
         this.duraçaoEfeito = duraçaoEfeito;
     }
@@ -85,16 +78,18 @@ public class Inimigo extends Entidade{
     }
 
     private void notificarCriacaoEfeito(Efeito efeito){
-        batalha.serNotificadoCriacaoEfeito(efeito);
+        getBatalha().serNotificadoCriacaoEfeito(efeito);
     }
 
     public void envenenar(Heroi nomeHeroi){
-        Veneno veneno = new Veneno("veneno", nomeHeroi, duraçaoEfeito, danoEfeito, eventos.get(0));
+        Veneno veneno = new Veneno("Veneno", nomeHeroi, duraçaoEfeito, danoEfeito, eventos.get(0), getBatalha());
         notificarCriacaoEfeito(veneno);
     }
 
-    
-    
+    public void curar(Inimigo inimigo){
+        Cura cura = new Cura("Cura", inimigo, duraçaoEfeito, danoEfeito, eventos.get(1), getBatalha());
+        notificarCriacaoEfeito(cura);
+    }
 
 }
 

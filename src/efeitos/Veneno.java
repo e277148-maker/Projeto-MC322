@@ -6,8 +6,8 @@ public class Veneno extends Efeito {
 
     //Construtor
 
-    public Veneno(String nome, Entidade dono, int acumulo, int efeito, Evento evento) {
-        super(nome, dono, acumulo, efeito, evento);
+    public Veneno(String nome, Entidade dono, int acumulo, int efeito, Evento evento, Batalha batalha) {
+        super(nome, dono, acumulo, efeito, evento, batalha);
     }
     // Metodos
 

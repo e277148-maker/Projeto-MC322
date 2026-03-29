@@ -82,17 +82,4 @@ public class Baralho {
 
     }
 
-    public void imprimirMao(){
-
-        System.out.println("Sua mão: ");
-
-        for (int i = 0; i < mao.size(); i++){
-
-            System.out.print(i + 1);
-            System.out.print("- ");
-            System.out.println(mao.get(i).getNome());
-
-        }
-    }
-
 }

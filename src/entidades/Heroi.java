@@ -3,6 +3,7 @@ package entidades;
 
 import java.util.List;
 
+import batalhas.Batalha;
 import efeitos.Efeito;
 
 public class Heroi extends Entidade {
@@ -11,13 +12,12 @@ public class Heroi extends Entidade {
     private boolean turno;
 
     // Construtor
-    public Heroi(String nome, String descricao, int vida, int escudo, List<Efeito> efeitos, int energia,
-            boolean turno) {
-        super(nome, descricao, vida, escudo, efeitos);
+    public Heroi(String nome, String descricao, int vida, int escudo, List<Efeito> efeitos, int vidaMaxima, int energia,
+            boolean turno, Batalha batalha) {
+        super(nome, descricao, vida, escudo, efeitos, vidaMaxima, batalha);
         this.energia = energia;
         this.turno = turno;
     }
-
     // Getters
 
     public int getEnergia(){

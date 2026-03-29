@@ -12,6 +12,7 @@ import baralho.*;
 
 public class App {
         public static void main(String[] args) throws Exception {
+                
                 // Criar eventos
 
                 Evento fimDeTurnoHeroi = new Evento("fimDeTurnoHeroi"); 
@@ -30,8 +31,8 @@ public class App {
                 // Inicializar cartas, entidades e eventos(com construtores)
                 List <Efeito> efeitos = new ArrayList<>();
 
-                Heroi heroi = new Heroi("", "", 50, 0, efeitos,0, false);
-                Inimigo inimigo = new Inimigo("Goblin raivoso", "Parece inofensivo, até você se aproximar!", 30, 0, efeitos, 15, batalha, 3, 5, eventos);
+                Heroi heroi = new Heroi(null, null, 50, 0, efeitos, 50, 0, false, batalha);
+                Inimigo inimigo = new Inimigo("Goblin raivoso", "Parece inofensivo, até você se aproximar!", 30, 0, efeitos, 30, 15, batalha, 3, 5, eventos);
 
                 CartaDeDano carta_espada = new CartaDeDano("Espada", "Uma espada afiada que causa dano ao inimigo.", 2, 10);
                 CartaDeDano carta_machado = new CartaDeDano("Machado", "Um machado antigo pesado de manusear.", 4, 15);
@@ -46,6 +47,7 @@ public class App {
                 CartaEscudo carta_soro_resistencia = new CartaEscudo("Soro de Resistência", "Um soro que aumenta a resistência do herói.", 2, 10);
                 
                 CartaDeVeneno carta_frasco_envenenado = new CartaDeVeneno("Frasco Envenenado", "Um frasco que envenena o inimigo", 4, 20, 3, fimDeTurnoInimigo, batalha);
+                CartaDeCura carta_pocao_de_cura = new CartaDeCura("Poção de cura", "Poção que cura o heroi", 5, 10, 3, fimDeTurnoHeroi, batalha);
 
 
                 // Criar listas e depois o prórprio baralho
@@ -65,6 +67,7 @@ public class App {
                 pilhaDeCompra.add(carta_soro_resistencia);
 
                 pilhaDeCompra.add(carta_frasco_envenenado);
+                pilhaDeCompra.add(carta_pocao_de_cura);
 
                 List<Carta> mao = new ArrayList<>();
                 List<Carta> pilhaDeDescarte = new ArrayList<>();
