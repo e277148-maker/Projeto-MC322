@@ -1,5 +1,6 @@
 // Classe abstrata para representar as cartas do jogo
-
+package cartas;
+import entidades.*;
 public abstract class Carta {
 
     private String nome;

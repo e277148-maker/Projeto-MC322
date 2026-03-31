@@ -1,3 +1,7 @@
+package cartas;
+import entidades.*;
+
+
 public class CartaDeDano extends Carta {
 
     // Construtor

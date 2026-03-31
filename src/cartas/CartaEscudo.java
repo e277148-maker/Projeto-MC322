@@ -1,3 +1,6 @@
+package cartas;
+import entidades.*;
+
 public class CartaEscudo extends Carta{
 
     // Construtor
