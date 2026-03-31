@@ -1,5 +1,7 @@
 package batalhas;
+
 public class Evento {
+
     // Atributos
     private String nome;
 

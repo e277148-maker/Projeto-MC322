@@ -1,18 +1,21 @@
 package batalhas;
+
 import java.util.Random;
 import java.util.Scanner;
 import java.util.List;
+
 import efeitos.*;
 import cartas.*;
 import entidades.*;
 import baralho.*;
 
 public class Batalha {
+
     // Atributos
     private List <Efeito> subscribersEfeito;
     private List <Evento> eventos;
 
-    // Constructor
+    // Construtor
     public Batalha(List<Efeito> subscribersEfeito, List<Evento> eventos) {
         this.subscribersEfeito = subscribersEfeito;
         this.eventos = eventos;
@@ -31,7 +34,7 @@ public class Batalha {
             heroi.setEscudo(0);
             heroi.setEnergia(6);
 
-            // 1. COMPRA AS CARTAS SÓ AQUI, NO INÍCIO DO TURNO
+            // COMPRA AS CARTAS NO INÍCIO DO TURNO
             while (baralho.getMao().size() < 5 && (!baralho.getPilhaDeCompras().isEmpty() || !baralho.getPilhaDeDescarte().isEmpty())) {
                 baralho.comprarCarta();
             }
@@ -95,7 +98,7 @@ public class Batalha {
                 switch (acaoInimigo) {
                     case 0: // Ataca
                         inimigo.atacar(heroi);
-                        System.out.println("Inimigo atacou");
+                        System.out.println("Inimigo atacou\n");
                         break;
                     case 1: // Ganha escudo
                         inimigo.ganharEscudo(defesaInimigo);
@@ -114,7 +117,7 @@ public class Batalha {
                         System.out.printf("%s usou cura\n", inimigo.getNome());
                         inimigo.curar(inimigo);
                         break;
-                } // A CHAVE QUE FALTAVA ERA ESSA AQUI!
+                }
 
                 System.out.println("-----------------------------------------");
                 try {

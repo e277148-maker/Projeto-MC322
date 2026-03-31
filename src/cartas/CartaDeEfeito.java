@@ -1,7 +1,5 @@
 package cartas;
 import batalhas.*;
-import efeitos.*;
-
 
 public abstract class CartaDeEfeito extends Carta {
 
@@ -44,14 +42,4 @@ public abstract class CartaDeEfeito extends Carta {
         this.batalha = batalha;
     }
 
-    // Metodos de Publisher
-
-    public void notificarCriacaoEfeito(Efeito efeito){
-        batalha.serNotificadoCriacaoEfeito(efeito);
-    }
-
-    
-
-    
-    
 }
