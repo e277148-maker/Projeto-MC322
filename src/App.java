@@ -18,7 +18,7 @@ public class App {
                 Evento fimDeTurnoHeroi = new Evento("fimDeTurnoHeroi"); 
                 Evento fimDeTurnoInimigo = new Evento("fimDeTurnoInimigo");
 
-                // Criar lista de eventos
+                // Criar lista de eventos.
                 List <Evento> eventos = new ArrayList<>();
                 eventos.add(fimDeTurnoHeroi); // Indice 0 na lista de eventos
                 eventos.add(fimDeTurnoInimigo); // Indice 1 na lista de eventos
