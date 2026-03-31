@@ -16,7 +16,8 @@ public class CartaDeCura extends CartaDeEfeito {
     @Override
     public void usar(Heroi heroi, Inimigo inimigo){
         Cura cura = new Cura("Cura", heroi, getAcumulo(), getEfeito(), getEvento(), getBatalha());
-        notificarCriacaoEfeito(cura);
+        heroi.aplicarEfeito(cura);
         heroi.perderEnergia(getCusto());
+
     }
 }

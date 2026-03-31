@@ -1,19 +1,21 @@
 package entidades;
-import efeitos.*;
+
 import java.util.List;
+
+import batalhas.*;
+import efeitos.Efeito;
+
 // Superclasse para representar uma entidade genérica no jogo, como um jogador ou um inimigo
 
-import batalhas.Batalha;
-
-public class Entidade {
+public abstract class Entidade {
 
     // Atributos
     private String nome;
     private String descricao;
     private int vida;
+    private int vidaMaxima;
     private int escudo;
     private List <Efeito> efeitos;
-    private int vidaMaxima;
     private Batalha batalha;
 
     // Construtor
@@ -25,6 +27,7 @@ public class Entidade {
         this.efeitos = efeitos;
         this.vidaMaxima = vidaMaxima;
         this.batalha = batalha;
+        
     }
 
     // Getters
@@ -131,8 +134,25 @@ public class Entidade {
 
     }
 
-    protected void aplicarEfeito(Efeito efeito){
-        efeitos.add(efeito);
+    public void aplicarEfeito(Efeito novoEfeito){
+
+        boolean jaPossuiEfeito = false;
+
+        // Percorre a lista de efeitos atuais da entidade
+        for (Efeito e : efeitos) {
+            // Se achar um efeito com o mesmo nome, apenas soma os acúmulos
+            if (e.getNome().equals(novoEfeito.getNome())) {
+                e.setAcumulo(e.getAcumulo() + novoEfeito.getAcumulo());
+                jaPossuiEfeito = true;
+                break; // Achou e somou, pode parar o loop
+            }
+        }
+
+        // Se terminou o loop e não tinha o efeito, adiciona na lista e inscreve no Publisher
+        if (!jaPossuiEfeito) {
+            efeitos.add(novoEfeito);
+            batalha.inscrever(novoEfeito); 
+        }
     }
 
     

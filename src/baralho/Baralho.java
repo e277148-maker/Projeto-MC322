@@ -51,17 +51,19 @@ public class Baralho {
     // Outros metodos
 
     public void comprarCarta(){
-
+    
         if (pilhaDeCompra.isEmpty()) {
             if (!pilhaDeDescarte.isEmpty()) {
-
-            pilhaDeCompra.addAll(pilhaDeDescarte);
-            pilhaDeDescarte.clear();
-
-            Collections.shuffle(pilhaDeCompra);
+                
+                // NOVO: Feedback visual do embaralhamento
+                System.out.println("\n[SISTEMA] Embaralhando a pilha de descarte para formar nova pilha de compras...\n");
+                
+                pilhaDeCompra.addAll(pilhaDeDescarte);
+                pilhaDeDescarte.clear();
+                Collections.shuffle(pilhaDeCompra);
 
             } else {
-                return; // Não há cartas para comprar
+                return; 
             }
         }
 
@@ -72,7 +74,7 @@ public class Baralho {
 
         }
 
-    }    
+    }
 
     public void descartar(Carta carta){
 
@@ -80,6 +82,19 @@ public class Baralho {
         pilhaDeDescarte.add(carta);
         mao.remove(indice);
 
+    }
+
+    public void descartarMao() {
+        pilhaDeDescarte.addAll(mao);
+        mao.clear();
+    }
+
+    public String verTopoBaralho() {
+
+        if (!pilhaDeCompra.isEmpty()) {
+            return pilhaDeCompra.get(0).getNome();
+        }
+        return "Nenhuma (Embaralho iminente)";
     }
 
 }

@@ -49,7 +49,7 @@ public abstract class Efeito {
     public Batalha getBatalha() {
         return batalha;
     }
-    
+
     // Setters
     
     public void setNome(String nome) {
@@ -78,35 +78,26 @@ public abstract class Efeito {
 
     // Outros metodos
 
-    public void getString(){
-        System.out.printf("%s: %d acumulos", nome, acumulo);
+    public String getString(){
+        return nome + ": " + acumulo + " acumulos";
     }
 
     // Metodos do Subscriber
-    public void serNotificado(){
-        aplicarEfeito();
-        acumulo--;
-        if (acumulo == 0){
-            notificarAcumulo(this, batalha);
+    public void serNotificado(Evento eventoAtual){
+
+        if (this.evento == eventoAtual){
+            aplicarEfeito();
+            acumulo--;
+
+            if (acumulo <= 0){
+                batalha.desinscrever(this);
+                dono.getEfeitos().remove(this);
+            }
         }
     }
 
-    // Metodos do Publisher
-
-    private void notificarAcumulo(Efeito efeito, Batalha batalha){
-        batalha.serNotificadoAcumulo(efeito);
-    }
-    
     // Outros metodos
     protected abstract void aplicarEfeito();
-
-    
-
-    
-
-
-
-    
 
 
 }

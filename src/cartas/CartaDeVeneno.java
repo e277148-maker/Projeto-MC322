@@ -13,7 +13,7 @@ public class CartaDeVeneno extends CartaDeEfeito {
     @Override
     public void usar(Heroi heroi, Inimigo inimigo){
         Veneno veneno = new Veneno("veneno", inimigo, getAcumulo(), getEfeito(), getEvento(), getBatalha());
-        notificarCriacaoEfeito(veneno);
+        inimigo.aplicarEfeito(veneno); 
         heroi.perderEnergia(getCusto());
     }
 

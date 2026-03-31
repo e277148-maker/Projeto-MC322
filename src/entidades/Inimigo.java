@@ -77,18 +77,14 @@ public class Inimigo extends Entidade{
         nomeHeroi.receberDano(dano_ataque);
     }
 
-    private void notificarCriacaoEfeito(Efeito efeito){
-        getBatalha().serNotificadoCriacaoEfeito(efeito);
-    }
-
     public void envenenar(Heroi nomeHeroi){
         Veneno veneno = new Veneno("Veneno", nomeHeroi, duraçaoEfeito, danoEfeito, eventos.get(0), getBatalha());
-        notificarCriacaoEfeito(veneno);
+        nomeHeroi.aplicarEfeito(veneno);
     }
 
     public void curar(Inimigo inimigo){
         Cura cura = new Cura("Cura", inimigo, duraçaoEfeito, danoEfeito, eventos.get(1), getBatalha());
-        notificarCriacaoEfeito(cura);
+        inimigo.aplicarEfeito(cura);
     }
 
 }
