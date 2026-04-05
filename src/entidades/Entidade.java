@@ -1,3 +1,5 @@
+// Superclasse para representar uma entidade genérica no jogo, como um jogador ou um inimigo
+
 package entidades;
 
 import java.util.List;
@@ -5,7 +7,6 @@ import java.util.List;
 import batalhas.*;
 import efeitos.Efeito;
 
-// Superclasse para representar uma entidade genérica no jogo, como um jogador ou um inimigo
 
 public abstract class Entidade {
 
@@ -20,6 +21,7 @@ public abstract class Entidade {
 
     // Construtor
     public Entidade(String nome, String descricao, int vida, int escudo, List<Efeito> efeitos, int vidaMaxima, Batalha batalha) {
+
         this.nome = nome;
         this.descricao = descricao;
         this.vida = vida;
@@ -27,7 +29,7 @@ public abstract class Entidade {
         this.efeitos = efeitos;
         this.vidaMaxima = vidaMaxima;
         this.batalha = batalha;
-        
+
     }
 
     // Getters
@@ -140,30 +142,23 @@ public abstract class Entidade {
 
         // Percorre a lista de efeitos atuais da entidade
         for (Efeito e : efeitos) {
+
             // Se achar um efeito com o mesmo nome, apenas soma os acúmulos
             if (e.getNome().equals(novoEfeito.getNome())) {
+
                 e.setAcumulo(e.getAcumulo() + novoEfeito.getAcumulo());
                 jaPossuiEfeito = true;
                 break; // Achou e somou, pode parar o loop
+
             }
         }
 
         // Se terminou o loop e não tinha o efeito, adiciona na lista e inscreve no Publisher
         if (!jaPossuiEfeito) {
+
             efeitos.add(novoEfeito);
             batalha.inscrever(novoEfeito); 
+
         }
     }
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
 }

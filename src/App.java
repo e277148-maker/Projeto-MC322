@@ -1,3 +1,8 @@
+/* Este código é a classe principal do jogo, onde a execução começa. 
+ * Ele cria os eventos, a batalha, as cartas, o herói e o inimigo, e inicia a batalha. 
+ * O código também inclui interações com o jogador para escolher o nome do herói e exibe mensagens de boas-vindas e instruções durante o jogo.
+ */
+
 // Importações das classes necessárias para o funcionamento do jogo
 
 import java.util.List;
@@ -5,14 +10,21 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import batalhas.*;
+import batalhas.Batalha;
 import cartas.*;
+import cartas.Carta;
 import efeitos.Efeito;
 import entidades.*;
+import entidades.Heroi;
+import entidades.Inimigo;
 import baralho.*;
+import baralho.Baralho;
 
 public class App {
+
+        // Método principal onde a execução do programa começa
         public static void main(String[] args) throws Exception {
-                
+
                 // Criar eventos
 
                 Evento fimDeTurnoHeroi = new Evento("fimDeTurnoHeroi"); 
@@ -31,8 +43,19 @@ public class App {
                 // Inicializar cartas, entidades e eventos(com construtores)
                 List <Efeito> efeitos = new ArrayList<>();
 
-                Heroi heroi = new Heroi(null, null, 50, 0, efeitos, 50, 0, false, batalha);
-                Inimigo inimigo = new Inimigo("Goblin raivoso", "Parece inofensivo, até você se aproximar!", 30, 0, efeitos, 30, 15, batalha, 3, 5, eventos);
+                Heroi heroi = new Heroi(null, null, 100, 0, efeitos, 50, 0, false, batalha);
+
+                // Criar a lista de inimigos
+                List<Inimigo> inimigos = new ArrayList<>();
+
+                // Criar inimigos e adiciona na lista
+                Inimigo goblin = new Inimigo("Goblin Raivoso", "Pequeno e irritante", 30, 0, new ArrayList<>(), 30, 10, batalha, 3, 5, eventos);
+                Inimigo orc = new Inimigo("Orc Brucutu", "Forte, mas lento", 45, 0, new ArrayList<>(), 45, 15, batalha, 3, 5, eventos);
+                Inimigo slime = new Inimigo("Slime Venenoso", "Gosmento", 25, 0, new ArrayList<>(), 25, 8, batalha, 3, 5, eventos);
+
+                inimigos.add(goblin);
+                inimigos.add(orc);
+                inimigos.add(slime);
 
                 CartaDeDano carta_espada = new CartaDeDano("Espada", "Uma espada afiada que causa dano ao inimigo.", 2, 10);
                 CartaDeDano carta_machado = new CartaDeDano("Machado", "Um machado antigo pesado de manusear.", 4, 15);
@@ -45,10 +68,9 @@ public class App {
                 CartaEscudo carta_escudo = new CartaEscudo("Escudo", "Um escudo simples que aumenta sua defesa.", 1, 5);
                 CartaEscudo carta_feitico_protecao = new CartaEscudo("Feitiço de Proteção", "Um feitiço que cria um escudo mágico em torno do herói.", 5, 20);
                 CartaEscudo carta_soro_resistencia = new CartaEscudo("Soro de Resistência", "Um soro que aumenta a resistência do herói.", 2, 10);
-                
-                CartaDeVeneno carta_frasco_envenenado = new CartaDeVeneno("Frasco Envenenado", "Um frasco que envenena o inimigo", 4, 20, 3, fimDeTurnoInimigo, batalha);
-                CartaDeCura carta_pocao_de_cura = new CartaDeCura("Poção de cura", "Poção que cura o heroi", 5, 10, 3, fimDeTurnoHeroi, batalha);
 
+                CartaDeEfeito carta_frasco_envenenado = new CartaDeEfeito("Frasco Envenenado", "Um frasco contendo um veneno mortal. Causa dano ao longo do tempo.", 3, 5, 3, eventos.get(0), batalha, "dano", "inimigo");
+                CartaDeEfeito carta_pocao_de_cura = new CartaDeEfeito("Poção de Cura", "Uma poção que restaura a saúde do herói ao longo do tempo.", 3, 5, 3, eventos.get(0), batalha, "cura", "heroi");
 
                 // Criar listas e depois o prórprio baralho
 
@@ -90,8 +112,7 @@ public class App {
 
                 // Inicialização da batalha
 
-
-                batalha.rodarBatalha(baralho, heroi, inimigo, scanner);
+                batalha.rodarBatalha(baralho, heroi, inimigos, scanner);
 
                 scanner.close(); // Fecha o scanner para evitar vazamento de memoria
 

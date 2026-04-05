@@ -1,4 +1,7 @@
+// Superclasse abstrata para representar um efeito que pode ser aplicado a uma entidade durante uma batalha
+
 package efeitos;
+
 import entidades.*;
 import batalhas.*;
 
@@ -12,18 +15,18 @@ public abstract class Efeito {
     private Evento evento;
     private Batalha batalha;
 
-    
-
-    // Constructors
+    // Construtores
 
     public Efeito(String nome, Entidade dono, int acumulo, int efeito, Evento evento, Batalha batalha) {
-            this.nome = nome;
-            this.dono = dono;
-            this.acumulo = acumulo;
-            this.efeito = efeito;
-            this.evento = evento;
-            this.batalha = batalha;
-        }
+
+        this.nome = nome;
+        this.dono = dono;
+        this.acumulo = acumulo;
+        this.efeito = efeito;
+        this.evento = evento;
+        this.batalha = batalha;
+
+    }
 
     // Getters
     public String getNome() {
@@ -98,6 +101,5 @@ public abstract class Efeito {
 
     // Outros metodos
     protected abstract void aplicarEfeito();
-
 
 }

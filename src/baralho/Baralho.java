@@ -1,4 +1,11 @@
+/* Este código define a classe Baralho, que representa o baralho de cartas em um jogo.
+* Ele inclui métodos para comprar cartas, descartar cartas e ver o topo do baralho. 
+* O código também lida com a situação em que o baralho de compras está vazio, 
+* embaralhando a pilha de descarte para formar um novo baralho de compras quando necessário.
+*/
+
 package baralho;
+
 import java.util.List;
 import java.util.Collections;
 import cartas.*;
@@ -54,10 +61,10 @@ public class Baralho {
     
         if (pilhaDeCompra.isEmpty()) {
             if (!pilhaDeDescarte.isEmpty()) {
-                
-                // NOVO: Feedback visual do embaralhamento
+
+                // Feedback visual do embaralhamento
                 System.out.println("\n[SISTEMA] Embaralhando a pilha de descarte para formar nova pilha de compras...\n");
-                
+
                 pilhaDeCompra.addAll(pilhaDeDescarte);
                 pilhaDeDescarte.clear();
                 Collections.shuffle(pilhaDeCompra);
