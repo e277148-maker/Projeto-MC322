@@ -1,3 +1,8 @@
+/* Este código é a classe principal do jogo, onde a execução começa. 
+ * Ele cria os eventos, a batalha, as cartas, o herói e o inimigo, e inicia a batalha. 
+ * O código também inclui interações com o jogador para escolher o nome do herói e exibe mensagens de boas-vindas e instruções durante o jogo.
+ */
+
 // Importações das classes necessárias para o funcionamento do jogo
 
 import java.util.List;
@@ -11,8 +16,10 @@ import entidades.*;
 import baralho.*;
 
 public class App {
+
+        // Método principal onde a execução do programa começa
         public static void main(String[] args) throws Exception {
-                
+
                 // Criar eventos
 
                 Evento fimDeTurnoHeroi = new Evento("fimDeTurnoHeroi"); 
@@ -45,10 +52,9 @@ public class App {
                 CartaEscudo carta_escudo = new CartaEscudo("Escudo", "Um escudo simples que aumenta sua defesa.", 1, 5);
                 CartaEscudo carta_feitico_protecao = new CartaEscudo("Feitiço de Proteção", "Um feitiço que cria um escudo mágico em torno do herói.", 5, 20);
                 CartaEscudo carta_soro_resistencia = new CartaEscudo("Soro de Resistência", "Um soro que aumenta a resistência do herói.", 2, 10);
-                
-                CartaDeVeneno carta_frasco_envenenado = new CartaDeVeneno("Frasco Envenenado", "Um frasco que envenena o inimigo", 4, 20, 3, fimDeTurnoInimigo, batalha);
-                CartaDeCura carta_pocao_de_cura = new CartaDeCura("Poção de cura", "Poção que cura o heroi", 5, 10, 3, fimDeTurnoHeroi, batalha);
 
+                CartaDeEfeito carta_frasco_envenenado = new CartaDeEfeito("Frasco Envenenado", "Um frasco contendo um veneno mortal. Causa dano ao longo do tempo.", 3, 5, 3, eventos.get(0), batalha, "dano", "inimigo");
+                CartaDeEfeito carta_pocao_de_cura = new CartaDeEfeito("Poção de Cura", "Uma poção que restaura a saúde do herói ao longo do tempo.", 3, 5, 3, eventos.get(0), batalha, "cura", "heroi");
 
                 // Criar listas e depois o prórprio baralho
 
@@ -89,7 +95,6 @@ public class App {
                 System.out.println("");
 
                 // Inicialização da batalha
-
 
                 batalha.rodarBatalha(baralho, heroi, inimigo, scanner);
 

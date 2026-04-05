@@ -1,7 +1,8 @@
+// Classe para representar um efeito de cura que pode ser aplicado a uma entidade durante uma batalha
+
 package efeitos;
 
-import batalhas.Batalha;
-import batalhas.Evento;
+import batalhas.*;
 import entidades.Entidade;
 
 public class Cura extends Efeito {
@@ -12,14 +13,17 @@ public class Cura extends Efeito {
 
     @Override
     protected void aplicarEfeito(){
+
         int vidaDono = getDono().getVida();
+
+        // Verifica se a cura ultrapassa a vida máxima da entidade e ajusta a vida de acordo
         if (vidaDono < getDono().getVidaMaxima() - getEfeito()){
             getDono().setVida(vidaDono + getEfeito());        
-        }
-        else{
+
+        } else {
+
             getDono().setVida(getDono().getVidaMaxima());
+
         }
-        
     }
-    
 }

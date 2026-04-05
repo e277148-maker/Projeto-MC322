@@ -1,13 +1,11 @@
-package entidades;
 // Subclasse para representar um inimigo do jogo, que é um tipo específico de entidade
+
+package entidades;
 
 import java.util.List;
 
-import batalhas.Batalha;
-import batalhas.Evento;
-import efeitos.Cura;
-import efeitos.Efeito;
-import efeitos.Veneno;
+import batalhas.*;
+import efeitos.*;
 
 public class Inimigo extends Entidade{
 
@@ -16,16 +14,16 @@ public class Inimigo extends Entidade{
     private int danoEfeito;
     private List <Evento> eventos;
 
-    
-
     // Construtor
     public Inimigo(String nome, String descricao, int vida, int escudo, List<Efeito> efeitos, int vidaMaxima,
             int dano_ataque, Batalha batalha, int duraçaoEfeito, int danoEfeito, List<Evento> eventos) {
+
         super(nome, descricao, vida, escudo, efeitos, vidaMaxima, batalha);
         this.dano_ataque = dano_ataque;
         this.duraçaoEfeito = duraçaoEfeito;
         this.danoEfeito = danoEfeito;
         this.eventos = eventos;
+
     }
     // Getters
 

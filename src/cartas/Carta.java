@@ -1,6 +1,9 @@
-// Classe abstrata para representar as cartas do jogo
+// Superclasse abstrata para representar as cartas do jogo
+
 package cartas;
+
 import entidades.*;
+
 public abstract class Carta {
 
     private String nome;
@@ -57,5 +60,4 @@ public abstract class Carta {
     // Método abstrato para usar a carta, que será implementado nas classes filhas
     public abstract void usar(Heroi heroi, Inimigo inimigo);
 
-    
 }

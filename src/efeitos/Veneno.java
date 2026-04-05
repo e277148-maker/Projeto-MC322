@@ -1,14 +1,18 @@
+// Classe para representar um efeito de veneno que pode ser aplicado a uma entidade durante uma batalha
+
 package efeitos;
+
 import entidades.*;
 import batalhas.*;
 
 public class Veneno extends Efeito {
 
-    //Construtor
+    // Construtor
 
     public Veneno(String nome, Entidade dono, int acumulo, int efeito, Evento evento, Batalha batalha) {
         super(nome, dono, acumulo, efeito, evento, batalha);
     }
+
     // Metodos
 
     @Override
@@ -16,5 +20,4 @@ public class Veneno extends Efeito {
         getDono().receberDano(getEfeito());
     }
 
-    
 }
