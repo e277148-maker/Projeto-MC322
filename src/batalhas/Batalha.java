@@ -25,13 +25,13 @@ public class Batalha {
         this.eventos = eventos;
     }
 
-    public void rodarBatalha(Baralho baralho, Heroi heroi, Inimigo inimigo, Scanner scanner) {
+    public void rodarBatalha(Baralho baralho, Heroi heroi, List<Inimigo> inimigos, Scanner scanner) {
 
         int defesaInimigo = 15;
         ponto_controle:
 
         // Loop principal com alternancia de turnos, até que alguem morra
-        while (heroi.getVida() > 0 && inimigo.getVida() > 0) {
+        while (heroi.getVida() > 0 && temInimigoVivo(inimigos)) {
 
             // reseta escudo e energia do heroi no inicio do turno
             heroi.setTurno(true);
@@ -45,7 +45,7 @@ public class Batalha {
 
             while (heroi.getTurno()) { // Loop de escolhas do herói
 
-                imprimirMenu(baralho, heroi, inimigo);
+                imprimirMenu(baralho, heroi, inimigos);
 
                 int escolha = scanner.nextInt();
                 int opcaoEncerrar = baralho.getMao().size();
@@ -57,7 +57,29 @@ public class Batalha {
 
                     if(heroi.getEnergia() >= cartaEscolida.getCusto()){
 
-                        cartaEscolida.usar(heroi, inimigo);
+                        Inimigo alvoSelecionado = pegaPrimeiroVivo(inimigos); // Alvo padrão
+                        
+                        // Verifica se a carta afeta o inimigo para perguntar o alvo
+                        boolean focaInimigo = (cartaEscolida instanceof CartaDeDano) || 
+                                              (cartaEscolida instanceof CartaDeEfeito && ((CartaDeEfeito)cartaEscolida).getAlvoEfeito().equalsIgnoreCase("Inimigo"));
+
+                        // Se tiver mais de um vivo e for carta ofensiva, pede pra escolher!
+                        if (focaInimigo && contaInimigosVivos(inimigos) > 1) {
+                            System.out.println("\nEscolha o alvo:");
+                            for (int i = 0; i < inimigos.size(); i++) {
+                                if (inimigos.get(i).getVida() > 0) {
+                                    System.out.printf("%d - %s (%d de vida)\n", i, inimigos.get(i).getNome(), inimigos.get(i).getVida());
+                                }
+                            }
+                            int alvoIndex = scanner.nextInt();
+                            if (alvoIndex >= 0 && alvoIndex < inimigos.size() && inimigos.get(alvoIndex).getVida() > 0) {
+                                alvoSelecionado = inimigos.get(alvoIndex);
+                            } else {
+                                System.out.println("Alvo inválido! O ataque pegará no primeiro inimigo vivo.");
+                            }
+                        }
+
+                        cartaEscolida.usar(heroi, alvoSelecionado);
                         baralho.descartar(cartaEscolida);
 
                     } else {
@@ -103,51 +125,55 @@ public class Batalha {
             } // Fim do turno do heroi
 
             // Turno do inimigo
-            if (inimigo.getVida() > 0){
+            Random random = new Random();
+            
+            for (Inimigo inimigo : inimigos) {
+                if (inimigo.getVida() > 0 && heroi.getVida() > 0){
+                    
+                    System.out.println("\n--- Turno de " + inimigo.getNome() + " ---");
+                    int acaoInimigo = random.nextInt(5); // Alterado para 5 para incluir a cura!
 
-                Random random = new Random();
-                int acaoInimigo = random.nextInt(5); // Alterado para 5 para incluir a cura!
+                    switch (acaoInimigo) {
 
-                switch (acaoInimigo) {
+                        case 0: // Ataca
+                            inimigo.atacar(heroi);
+                            System.out.println("Inimigo atacou\n");
+                            break;
 
-                    case 0: // Ataca
-                        inimigo.atacar(heroi);
-                        System.out.println("Inimigo atacou\n");
-                        break;
+                        case 1: // Ganha escudo
+                            inimigo.ganharEscudo(defesaInimigo);
+                            System.out.printf("%s ganhou escudo\n", inimigo.getNome());
+                            break;
 
-                    case 1: // Ganha escudo
-                        inimigo.ganharEscudo(defesaInimigo);
-                        System.out.printf("%s ganhou escudo\n", inimigo.getNome());
-                        break;
+                        case 2: // Ataca e ganha escudo
+                            inimigo.atacar(heroi);
+                            inimigo.ganharEscudo(defesaInimigo);
+                            System.out.printf("%s atacou e ganhou escudo\n", inimigo.getNome());
+                            break;
 
-                    case 2: // Ataca e ganha escudo
-                        inimigo.atacar(heroi);
-                        inimigo.ganharEscudo(defesaInimigo);
-                        System.out.printf("%s atacou e ganhou escudo\n", inimigo.getNome());
-                        break;
+                        case 3: // Usar veneno
+                            System.out.printf("%s envenenou heroi\n", inimigo.getNome());
+                            inimigo.envenenar(heroi);
+                            break;
 
-                    case 3: // Usar veneno
-                        System.out.printf("%s envenenou heroi\n", inimigo.getNome());
-                        inimigo.envenenar(heroi);
-                        break;
+                        case 4: // Usar cura
+                            System.out.printf("%s usou cura\n", inimigo.getNome());
+                            inimigo.curar(inimigo);
+                            break;
 
-                    case 4: // Usar cura
-                        System.out.printf("%s usou cura\n", inimigo.getNome());
-                        inimigo.curar(inimigo);
-                        break;
+                    }
+
+                    System.out.println("-----------------------------------------");
+
+                    try {
+                        // Pede para o Java pausar a execução por 2500 milissegundos (2.5 segundos)
+                        Thread.sleep(2500); 
+
+                    } catch (InterruptedException e) {
+                        System.out.println("Aviso: A pausa do turno foi interrompida.");
+                    }
 
                 }
-
-                System.out.println("-----------------------------------------");
-
-                try {
-                    // Pede para o Java pausar a execução por 2500 milissegundos (2.5 segundos)
-                    Thread.sleep(2500); 
-
-                } catch (InterruptedException e) {
-                    System.out.println("Aviso: A pausa do turno foi interrompida.");
-                }
-
             }
             // Fim do turno do inimigo
 
@@ -156,13 +182,15 @@ public class Batalha {
             if (!heroi.estarVivo()) {  // Se o heroi morrer o jogo acaba
                 System.out.println("\nQue pena... Você perdeu o combate");
                 break ponto_controle;
+            } else if (!temInimigoVivo(inimigos)) {
+                System.out.println("\nPARABÉNS! VOCÊ VENCEU A BATALHA!");
             }
 
         } // Fim do while principal
 
     }
 
-    public void imprimirMenu(Baralho baralho, Heroi heroi, Inimigo inimigo){
+    public void imprimirMenu(Baralho baralho, Heroi heroi, List<Inimigo> inimigos){
 
         System.out.println("===============================================================================");
         System.out.println("Cartas no Baralho: " + baralho.getPilhaDeCompras().size() + " | Cartas no Descarte: " + baralho.getPilhaDeDescarte().size());
@@ -185,19 +213,22 @@ public class Batalha {
         }
 
         System.out.println("vs");
-        System.out.printf("%s (%d/30 de vida) (%d de escudo)\n", inimigo.getNome(), inimigo.getVida(), inimigo.getEscudo());
-
-        // Imprime os efeitos ativos do inimigo, se houver
-        if (!inimigo.getEfeitos().isEmpty()) {
-
-            System.out.print("Efeitos ativos: ");
-
-            for (Efeito e : inimigo.getEfeitos()) {
-                System.out.print("[" + e.getString() + "] ");
+        
+        for (int i = 0; i < inimigos.size(); i++) {
+            Inimigo inim = inimigos.get(i);
+            if (inim.getVida() > 0) {
+                System.out.printf("%d. %s (%d/%d de vida) (%d de escudo)\n", i, inim.getNome(), inim.getVida(), inim.getVidaMaxima(), inim.getEscudo());
+                // Imprime os efeitos ativos do inimigo, se houver
+                if (!inim.getEfeitos().isEmpty()) {
+                    System.out.print("   Efeitos ativos: ");
+                    for (Efeito e : inim.getEfeitos()) {
+                        System.out.print("[" + e.getString() + "] ");
+                    }
+                    System.out.println();
+                }
+            } else {
+                System.out.printf("%d. %s (MORTALMENTE DERROTADO)\n", i, inim.getNome());
             }
-
-            System.out.println();
-
         }
 
         System.out.println("");
@@ -222,6 +253,30 @@ public class Batalha {
         System.out.println("Escolha: ");
         System.out.println("");
 
+    }
+
+    // --- MÉTODOS AUXILIARES PARA LIDAR COM A LISTA DE INIMIGOS ---
+
+    private boolean temInimigoVivo(List<Inimigo> inimigos) {
+        for (Inimigo i : inimigos) {
+            if (i.getVida() > 0) return true;
+        }
+        return false;
+    }
+
+    private int contaInimigosVivos(List<Inimigo> inimigos) {
+        int cont = 0;
+        for (Inimigo i : inimigos) {
+            if (i.getVida() > 0) cont++;
+        }
+        return cont;
+    }
+
+    private Inimigo pegaPrimeiroVivo(List<Inimigo> inimigos) {
+        for (Inimigo i : inimigos) {
+            if (i.getVida() > 0) return i;
+        }
+        return inimigos.get(0);
     }
 
     // Metodos do publisher
