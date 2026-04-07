@@ -1,11 +1,13 @@
 package cartas;
 import entidades.*;
-
+/**
+ * Gerencia as cartas de escudo
+ */
 public class CartaEscudo extends Carta{
 
     // Construtor
     /**
-     * Cria uma carta de escudo com um nome, uma descrição, um custo eum efeito
+     * Inicializas uma carta de escudo
      * @param nome Nome da carta
      * @param descricao Descrição da carta
      * @param custo Energia gasta ao usar a carta

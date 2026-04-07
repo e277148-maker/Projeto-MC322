@@ -15,12 +15,12 @@ import batalhas.Batalha;
 import cartas.*;
 import cartas.Carta;
 import efeitos.Efeito;
-import entidades.*;
 import entidades.Heroi;
 import entidades.Inimigo;
-import baralho.*;
 import baralho.Baralho;
-
+/**
+ * Roda o código principal
+ */
 public class App {
 
         // Método principal onde a execução do programa começa

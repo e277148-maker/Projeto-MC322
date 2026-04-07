@@ -6,18 +6,28 @@ import java.util.List;
 
 import batalhas.Batalha;
 import efeitos.Efeito;
-
+/**
+ * Gerencia o herói
+ */
 public class Heroi extends Entidade {
 
     private int energia;
     private boolean turno;
 
     // Construtor
-    /**
-     * Cria um herói com os atributos de uma entidade, com uma variavl {@link turno} que indica se esta no seu turno e com uma quantidade de energia inicial
-     * @param energia
-     * @param turno
-     */
+/**
+ * Inicializa um herói
+ * @param nome Nome do herói
+ * @param descricao Descrição do herói
+ * @param vida Vida do herói
+ * @param escudo Escudo do herói
+ * @param efeitos Efeitos ativos no herói
+ * @param vidaMaxima Vida maxima do herói
+ * @param batalha Batalha ao qual o herói pertence
+ * @param eventos Lista de eventos no qual efeitos são aplicados
+ * @param energia Energia inicial do herói
+ * @param turno Indica se é o turno do herói
+ */
     public Heroi(String nome, String descricao, int vida, int escudo, List<Efeito> efeitos, int vidaMaxima, int energia,
             boolean turno, Batalha batalha) {
 

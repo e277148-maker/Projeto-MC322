@@ -3,7 +3,9 @@
 package cartas;
 
 import entidades.*;
-
+/**
+ * Gerencia as cartas
+ */
 public abstract class Carta {
     /**
      * Nome da carta
@@ -24,7 +26,7 @@ public abstract class Carta {
 
     // Construtor
     /**
-     * Cria uma carta com um nome, uma descrição, um custo e um efeito
+     * Inicializa uma carta
      * @param nome Nome da carta
      * @param descricao Descrição da carta
      * @param custo O quanto de energia que é gasto ao usar a carta

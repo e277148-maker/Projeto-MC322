@@ -4,7 +4,9 @@ package efeitos;
 
 import entidades.*;
 import batalhas.*;
-
+/**
+ * Gerencia os efeitos
+ */
 public abstract class Efeito {
 
     // Atributos
@@ -35,7 +37,7 @@ public abstract class Efeito {
 
     // Construtores
     /**
-     * Cria um efeito com um nome, um dono, um acumulo, um efeito, um evento e uma batalha
+     * Inicializa um efeito
      * @param nome Nome do efeito
      * @param dono Entidade na qual o efeito será aplicado
      * @param acumulo Número de turnos que o efeito será aplicado

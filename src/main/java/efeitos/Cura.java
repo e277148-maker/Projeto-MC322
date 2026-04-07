@@ -4,11 +4,19 @@ package efeitos;
 
 import batalhas.*;
 import entidades.Entidade;
-
+/**
+ * Gerencia os efeitos de cura
+ */
 public class Cura extends Efeito {
-    /**
-     * Cria um efeito de cura com os atributos da classe {@link Efeito}
-     */
+/**
+ * Inicializa um efeito de cura
+ * @param nome Nome do efeito
+ * @param dono Entidade na qual o efeito sera aplicado
+ * @param acumulo Número de turnos que o efeito ficará ativo
+ * @param efeito Quantidade maxi de vida que será curada
+ * @param evento Evento no qual o efeito será aplicado
+ * @param batalha Batalha ao qual o efeito pertence
+ */
     public Cura(String nome, Entidade dono, int acumulo, int efeito, Evento evento, Batalha batalha) {
         super(nome, dono, acumulo, efeito, evento, batalha);
     }

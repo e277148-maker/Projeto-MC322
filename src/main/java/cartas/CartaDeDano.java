@@ -1,12 +1,14 @@
 package cartas;
 import entidades.*;
 
-
+/**
+ * Gerencia as classes de dano
+ */
 public class CartaDeDano extends Carta {
 
     // Construtor
     /**
-     * Cria uma carta com um nome, uma descrição, um custo e um efeito
+     * Inicializa uma carta de dano
      * @param nome Nome da carta
      * @param descricao Descrição da carta
      * @param custo O quanto de energia que é gasto ao usar a carta
@@ -21,7 +23,7 @@ public class CartaDeDano extends Carta {
     //Sobrescreve o método usar da classe Carta, aplicando o dano ao inimigo e reduzindo a energia do heroi
     @Override
     /**
-     * Herói usa a carta de dano
+     * Herói usa a carta de dano, causando dano no inimigo
      */
     public void usar(Heroi heroi, Inimigo inimigo){
 

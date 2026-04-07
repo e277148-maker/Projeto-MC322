@@ -5,7 +5,9 @@ package cartas;
 import batalhas.*;
 import efeitos.*;
 import entidades.*;
-
+/**
+ * Gerencia as cartas de efeitos
+ */
 public class CartaDeEfeito extends Carta {
     /**
      * Número de turnos que o efeito ficara ativo
@@ -29,7 +31,7 @@ public class CartaDeEfeito extends Carta {
     private String alvoEfeito;
 
     /**
-     * Cria uma carta de efeito com um acumulo, um evento, uma batalha, um tipo e um alvo, além dos atributos padrões de uma cartas
+     * Inicializa uma carta de efeito
      * @param nome Nome da carta
      * @param descricao Descrição da carta
      * @param custo Custo da carta

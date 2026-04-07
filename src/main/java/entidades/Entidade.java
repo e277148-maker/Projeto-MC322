@@ -7,7 +7,9 @@ import java.util.List;
 import batalhas.*;
 import efeitos.Efeito;
 
-
+/**
+ * Gerencia uma entidade
+ */
 public abstract class Entidade {
 
     // Atributos
@@ -42,7 +44,7 @@ public abstract class Entidade {
 
     // Construtor
     /**
-     * Cria uma entidade com um nome, uma descrição, uma vida inicial, uma vida maxima, um escudo inicial e a batalha ao qual pertence
+     * Inicializa uma entidade
      * @param nome Nome da entidade
      * @param descricao Descrição da entidade
      * @param vida Vida da entidade

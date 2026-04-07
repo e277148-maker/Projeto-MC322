@@ -6,7 +6,9 @@ import java.util.List;
 
 import batalhas.*;
 import efeitos.*;
-
+/**
+ * Gerencia os inimigos
+ */
 public class Inimigo extends Entidade{
 
     private int dano_ataque;
@@ -15,15 +17,20 @@ public class Inimigo extends Entidade{
     private List <Evento> eventos;
 
     // Construtor
-    /**
-     * Cria um inimigo com os atributos de uma entidade, um dano de ataque,
-     *  a duração maxima que seu efeito pode ter, um dano que o seu efeito causa e
-     *  uma lista com os eventos nos quais os efeitos devem ser aplicados
-     * @param dano_ataque
-     * @param duraçaoEfeito
-     * @param danoEfeito
-     * @param eventos
-     */
+/**
+ * Inicializa um inimigo
+ * @param nome Nome do inimigo
+ * @param descricao Descrição do inimigo
+ * @param vida Vida do inimigo
+ * @param escudo Escudo do inimigo
+ * @param efeitos Efeitos ativos no inimigo
+ * @param vidaMaxima Vida maxima do inimigo
+ * @param dano_ataque Dano base que o inimigo causa ao herói
+ * @param batalha Batalha ao qual o inimigo pertence
+ * @param duraçaoEfeito Duração do efeito causado pelo inimigo
+ * @param danoEfeito Poder do efeito causado pelo inimigo
+ * @param eventos Lista de eventos no qual efeitos são aplicados
+ */
     public Inimigo(String nome, String descricao, int vida, int escudo, List<Efeito> efeitos, int vidaMaxima,
             int dano_ataque, Batalha batalha, int duraçaoEfeito, int danoEfeito, List<Evento> eventos) {
 

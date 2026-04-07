@@ -12,7 +12,9 @@ import efeitos.*;
 import cartas.*;
 import entidades.*;
 import baralho.*;
-
+/**
+ * Gerencia as batalhas
+ */
 public class Batalha {
 
     // Atributos
@@ -27,7 +29,7 @@ public class Batalha {
 
     // Construtor
    /**
-    * Cria uma batalha com uma lista de  efeitos que serão notificados e uma lista de eventos
+    * Inicializa uma batalha 
     * @param subscribersEfeito Lista de efeitos que a classe notifica quando ocorre um evento
     * @param eventos Lista de eventos importantes de uma batalha
     */

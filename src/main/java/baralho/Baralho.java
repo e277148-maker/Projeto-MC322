@@ -10,7 +10,9 @@ import java.util.List;
 import java.util.Collections;
 import cartas.*;
 
-
+/**
+ * Gerencia o baralho
+ */
 public class Baralho {
 
     // Cria as listas para o baralho, descarte e mão do jogador
@@ -31,7 +33,7 @@ public class Baralho {
 
     // Construtor
     /**
-     * Cria um baralho que contem um pilha de compra, pilha de descar e a mão do jogador
+     * Inicializa o baralho
      * @param pilhaDeCompra Lista que contem as cartas que o heroi pode comprar
      * @param pilhaDeDescarte Lista que contem as cartas descartadas
      * @param mao Lista que contem as cartas da mâo do herói
