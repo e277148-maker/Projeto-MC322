@@ -44,7 +44,7 @@ public class App {
                 // Inicializar cartas, entidades e eventos(com construtores)
                 List <Efeito> efeitos = new ArrayList<>();
 
-                Heroi heroi = new Heroi(null, null, 100, 0, efeitos, 50, 0, false, batalha);
+                Heroi heroi = new Heroi(null, null, 100, 0, efeitos, 100, 0, false, batalha);
 
                 // Criar a lista de inimigos
                 List<Inimigo> inimigos = new ArrayList<>();

@@ -222,7 +222,7 @@ public class Batalha {
         System.out.println("Próxima carta a ser comprada: [" + baralho.verTopoBaralho() + "]");
         System.out.println("===============================================================================");
         System.out.println("");
-        System.out.printf("%s (%d/50 de vida) (%d de escudo) (%d/6 de energia)\n", heroi.getNome(), heroi.getVida(), heroi.getEscudo(), heroi.getEnergia());
+        System.out.printf("%s (%d/100 de vida) (%d de escudo) (%d/6 de energia)\n", heroi.getNome(), heroi.getVida(), heroi.getEscudo(), heroi.getEnergia());
 
         // Imprime os efeitos ativos do heroi, se houver
         if (!heroi.getEfeitos().isEmpty()) {
