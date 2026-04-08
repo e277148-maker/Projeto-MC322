@@ -24,6 +24,10 @@ O herói começa com 100 de vida e 6 de energia por turno. O jogador deve escolh
 - Cota de malha (custo 2): adiciona 7 de escudo ao herói
 - Capacete (custo 3): adiciona 7 de escudo ao herói
 
+- Frasco envenenado (custo 3): causa 5 de dano ao inimigo
+- Feitiço de cura (custo 2) Cura 4 de vida do herói
+- Poção de cura (custo 3) Cura 5 de vida do herói
+
 ## Compilação e execução
 
 ### Compilar
