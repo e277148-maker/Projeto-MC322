@@ -9,11 +9,10 @@ package org.example;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import batalhas.*;
-import batalhas.Batalha;
 import cartas.*;
-import cartas.Carta;
 import efeitos.Efeito;
 import entidades.Heroi;
 import entidades.Inimigo;
@@ -39,20 +38,47 @@ public class App {
                 // Criar batalha
                 List <Efeito> subscribersEfeito = new ArrayList<>();
 
-                Batalha batalha = new Batalha(subscribersEfeito, eventos);
+                Batalha batalha01 = new Batalha(subscribersEfeito, eventos, "batalha01");
+                Batalha batalha11 = new Batalha(subscribersEfeito, eventos, "batalha11");
+                Batalha batalha12 = new Batalha(subscribersEfeito, eventos, "batalha12");
+                Batalha batalha21 = new Batalha(subscribersEfeito, eventos, "batalha21");
+                Batalha batalha22 = new Batalha(subscribersEfeito, eventos, "batalha22");
+                Batalha batalha23 = new Batalha(subscribersEfeito, eventos, "batalha23");
+                Batalha batalha24 = new Batalha(subscribersEfeito, eventos, "batalha24");
+
+                // Criar arvore de batalhas
+
+                DefaultMutableTreeNode batalha_01 = new DefaultMutableTreeNode(batalha01);
+
+                DefaultMutableTreeNode batalha_11 = new DefaultMutableTreeNode(batalha11);
+                batalha_01.add(batalha_11);
+                DefaultMutableTreeNode batalha_12 = new DefaultMutableTreeNode(batalha12);
+                batalha_01.add(batalha_12);
+                
+                DefaultMutableTreeNode batalha_21 = new DefaultMutableTreeNode(batalha21);
+                batalha_11.add(batalha_21);
+                DefaultMutableTreeNode batalha_22 = new DefaultMutableTreeNode(batalha22);
+                batalha_11.add(batalha_22);
+
+                DefaultMutableTreeNode batalha_23 = new DefaultMutableTreeNode(batalha23);
+                batalha_01.add(batalha_23);
+                DefaultMutableTreeNode batalha_24 = new DefaultMutableTreeNode(batalha24);
+                batalha_01.add(batalha_24);
+                
+
 
                 // Inicializar cartas, entidades e eventos(com construtores)
                 List <Efeito> efeitos = new ArrayList<>();
 
-                Heroi heroi = new Heroi(null, null, 100, 0, efeitos, 100, 0, false, batalha);
+                Heroi heroi = new Heroi(null, null, 100, 0, efeitos, 100, 0, false, batalha01);
 
                 // Criar a lista de inimigos
                 List<Inimigo> inimigos = new ArrayList<>();
 
                 // Criar inimigos e adiciona na lista
-                Inimigo goblin = new Inimigo("Goblin Raivoso", "Pequeno e irritante", 30, 0, new ArrayList<>(), 30, 10, batalha, 3, 5, eventos);
-                Inimigo orc = new Inimigo("Orc Brucutu", "Forte, mas lento", 45, 0, new ArrayList<>(), 45, 15, batalha, 3, 5, eventos);
-                Inimigo slime = new Inimigo("Slime Venenoso", "Gosmento", 25, 0, new ArrayList<>(), 25, 8, batalha, 3, 5, eventos);
+                Inimigo goblin = new Inimigo("Goblin Raivoso", "Pequeno e irritante", 30, 0, new ArrayList<>(), 30, 10, batalha01, 3, 5, eventos);
+                Inimigo orc = new Inimigo("Orc Brucutu", "Forte, mas lento", 45, 0, new ArrayList<>(), 45, 15, batalha01, 3, 5, eventos);
+                Inimigo slime = new Inimigo("Slime Venenoso", "Gosmento", 25, 0, new ArrayList<>(), 25, 8, batalha01, 3, 5, eventos);
 
                 inimigos.add(goblin);
                 inimigos.add(orc);
@@ -75,9 +101,9 @@ public class App {
                 CartaEscudo carta_cota_de_malha = new CartaEscudo("Cota de malha", "Uma cota de malha que aumenta a defesa", 2, 7);
                 CartaEscudo carta_capacete = new CartaEscudo("Capacete", "Um capacete que aumenta a resistencia", 3, 7);
 
-                CartaDeEfeito carta_frasco_envenenado = new CartaDeEfeito("Frasco Envenenado", "Um frasco contendo um veneno mortal. Causa dano ao longo do tempo.", 3, 5, 3, eventos.get(0), batalha, "dano", "inimigo");
-                CartaDeEfeito carta_pocao_de_cura = new CartaDeEfeito("Poção de Cura", "Uma poção que restaura a saúde do herói ao longo do tempo.", 3, 5, 3, eventos.get(0), batalha, "cura", "heroi");
-                CartaDeEfeito carta_feitico_de_cura = new CartaDeEfeito("Feitiço de cura", "Um feitiço que restaura a saúde do herói", 2, 4, 2, eventos.get(0), batalha, "cura", "heroi");
+                CartaDeEfeito carta_frasco_envenenado = new CartaDeEfeito("Frasco Envenenado", "Um frasco contendo um veneno mortal. Causa dano ao longo do tempo.", 3, 5, 3, eventos.get(0), batalha01, "dano", "inimigo");
+                CartaDeEfeito carta_pocao_de_cura = new CartaDeEfeito("Poção de Cura", "Uma poção que restaura a saúde do herói ao longo do tempo.", 3, 5, 3, eventos.get(0), batalha01, "cura", "heroi");
+                CartaDeEfeito carta_feitico_de_cura = new CartaDeEfeito("Feitiço de cura", "Um feitiço que restaura a saúde do herói", 2, 4, 2, eventos.get(0), batalha01, "cura", "heroi");
 
                 // Criar listas e depois o prórprio baralho
 
@@ -124,7 +150,7 @@ public class App {
 
                 // Inicialização da batalha
 
-                batalha.rodarBatalha(baralho, heroi, inimigos, scanner);
+                batalha01.rodarBatalha(baralho, heroi, inimigos, scanner);
 
                 scanner.close(); // Fecha o scanner para evitar vazamento de memoria
 
