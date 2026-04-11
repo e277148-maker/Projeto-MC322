@@ -73,16 +73,81 @@ public class App {
                 Heroi heroi = new Heroi(null, null, 100, 0, efeitos, 100, 0, false, batalha01);
 
                 // Criar a lista de inimigos
-                List<Inimigo> inimigos = new ArrayList<>();
+                List<Inimigo> inimigos01 = new ArrayList<>();
+                List<Inimigo> inimigos11 = new ArrayList<>();
+                List<Inimigo> inimigos12 = new ArrayList<>();
+                List<Inimigo> inimigos21 = new ArrayList<>();
+                List<Inimigo> inimigos22 = new ArrayList<>();
+                List<Inimigo> inimigos23 = new ArrayList<>();
+                List<Inimigo> inimigos24 = new ArrayList<>();
+
+                List<List <Inimigo>> inimigos = new ArrayList<>();
 
                 // Criar inimigos e adiciona na lista
                 Inimigo goblin = new Inimigo("Goblin Raivoso", "Pequeno e irritante", 30, 0, new ArrayList<>(), 30, 10, batalha01, 3, 5, eventos);
-                Inimigo orc = new Inimigo("Orc Brucutu", "Forte, mas lento", 45, 0, new ArrayList<>(), 45, 15, batalha01, 3, 5, eventos);
+                Inimigo orc1 = new Inimigo("Orc Brucutu", "Forte, mas lento", 45, 0, new ArrayList<>(), 45, 15, batalha01, 3, 5, eventos);
                 Inimigo slime = new Inimigo("Slime Venenoso", "Gosmento", 25, 0, new ArrayList<>(), 25, 8, batalha01, 3, 5, eventos);
 
-                inimigos.add(goblin);
-                inimigos.add(orc);
-                inimigos.add(slime);
+                Inimigo rato1 = new Inimigo("Rato", "Pequeno e irritante", 35, 0, new ArrayList<>(), 35, 15, batalha11, 3, 5, eventos);
+                Inimigo rato2 = new Inimigo("Rato", "Pequeno e irritante", 35, 0, new ArrayList<>(), 35, 15, batalha11, 3, 5, eventos);
+                Inimigo escorpião = new Inimigo("Escorpião", "Muito venenoso", 35, 0, new ArrayList<>(), 35, 10, batalha11, 3, 9, eventos);
+
+                Inimigo orc2 = new Inimigo("Orc Brucutu", "Forte, mas lento", 45, 0, new ArrayList<>(), 45, 15, batalha12, 3, 5, eventos);
+                Inimigo orc3 = new Inimigo("Orc Brucutu", "Forte, mas lento", 45, 0, new ArrayList<>(), 45, 15, batalha12, 3, 5, eventos);
+                Inimigo orc4 = new Inimigo("Orc Brucutu", "Forte, mas lento", 45, 0, new ArrayList<>(), 45, 15, batalha12, 3, 5, eventos);
+
+                Inimigo bandoDeGoblins1 = new Inimigo("Bando de Goblins Raivosos", "Pequenos e irritantes", 60, 0, new ArrayList<>(), 60, 9, batalha21, 3, 5, eventos);
+                Inimigo bandoDeGoblins2 = new Inimigo("Bando de Goblins Raivosos", "Pequenos e irritantes", 60, 0, new ArrayList<>(), 60, 9, batalha21, 3, 5, eventos);
+                Inimigo aranhaGigante = new Inimigo("Aranha Gigante", "Grande e agressiva", 50, 0, new ArrayList<>(), 50, 20, batalha21, 4, 7, eventos);
+
+                Inimigo bruxa1 = new Inimigo("Bruxa", "Velha e perigosa", 40, 0, new ArrayList<>(), 40, 10, batalha22, 5, 10, eventos);
+                Inimigo bruxa2 = new Inimigo("Bruxa", "Velha e perigosa", 40, 0, new ArrayList<>(), 40, 10, batalha22, 5, 10, eventos);
+                Inimigo gigante = new Inimigo("Gigante", "Grande, mas lento", 70, 0, new ArrayList<>(), 70, 15, batalha22, 3, 5, eventos);
+
+                Inimigo dragao1 = new Inimigo("Dragao", "Voa e cospe fogo", 50, 0, new ArrayList<>(), 50, 30, batalha23, 2, 2, eventos);
+                Inimigo dragao2 = new Inimigo("Dragao", "Voa e cospe fogo", 50, 0, new ArrayList<>(), 50, 30, batalha23, 2, 2, eventos);
+                Inimigo dragao3 = new Inimigo("Dragao", "Voa e cospe fogo", 50, 0, new ArrayList<>(), 50, 30, batalha23, 2, 2, eventos);
+
+                Inimigo bandoDeOrcs1 = new Inimigo("Bando de Orcs", "Fortes e bravos", 65, 0, new ArrayList<>(), 65, 20, batalha23, 2, 2, eventos);
+                Inimigo bandoDeOrcs2 = new Inimigo("Bando de Orcs", "Fortes e bravos", 65, 0, new ArrayList<>(), 65, 20, batalha23, 2, 2, eventos);
+                Inimigo bandoDeOrcs3 = new Inimigo("Bando de Orcs", "Fortes e bravos", 65, 0, new ArrayList<>(), 65, 20, batalha23, 2, 2, eventos);
+
+                inimigos01.add(goblin);
+                inimigos01.add(orc1);
+                inimigos01.add(slime);
+
+                inimigos11.add(rato1);
+                inimigos11.add(rato2);
+                inimigos11.add(escorpião);
+
+                inimigos12.add(orc2);
+                inimigos12.add(orc3);
+                inimigos12.add(orc4);
+
+                inimigos21.add(bandoDeGoblins1);
+                inimigos21.add(bandoDeGoblins2);
+                inimigos21.add(aranhaGigante);
+
+                inimigos22.add(gigante);
+                inimigos22.add(bruxa1);
+                inimigos22.add(bruxa2);
+
+                inimigos23.add(dragao1);
+                inimigos23.add(dragao2);
+                inimigos23.add(dragao3);
+
+                inimigos24.add(bandoDeOrcs1);
+                inimigos24.add(bandoDeOrcs2);
+                inimigos24.add(bandoDeOrcs3);
+
+                inimigos.add(inimigos01);
+                inimigos.add(inimigos11);
+                inimigos.add(inimigos12);
+                inimigos.add(inimigos21);
+                inimigos.add(inimigos22);
+                inimigos.add(inimigos23);
+                inimigos.add(inimigos24);
+
 
                 CartaDeDano carta_espada = new CartaDeDano("Espada", "Uma espada afiada que causa dano ao inimigo.", 2, 10);
                 CartaDeDano carta_machado = new CartaDeDano("Machado", "Um machado antigo pesado de manusear.", 4, 15);
@@ -98,8 +163,8 @@ public class App {
                 CartaEscudo carta_escudo = new CartaEscudo("Escudo", "Um escudo simples que aumenta sua defesa.", 1, 5);
                 CartaEscudo carta_feitico_protecao = new CartaEscudo("Feitiço de Proteção", "Um feitiço que cria um escudo mágico em torno do herói.", 5, 20);
                 CartaEscudo carta_soro_resistencia = new CartaEscudo("Soro de Resistência", "Um soro que aumenta a resistência do herói.", 2, 10);
-                CartaEscudo carta_cota_de_malha = new CartaEscudo("Cota de malha", "Uma cota de malha que aumenta a defesa", 2, 7);
-                CartaEscudo carta_capacete = new CartaEscudo("Capacete", "Um capacete que aumenta a resistencia", 3, 7);
+                CartaEscudo carta_cota_de_malha = new CartaEscudo("Cota de malha", "Uma cota de malha que aumenta a defesa", 0, 7);
+                CartaEscudo carta_capacete = new CartaEscudo("Capacete", "Um capacete que aumenta a resistencia", 2, 7);
 
                 CartaDeEfeito carta_frasco_envenenado = new CartaDeEfeito("Frasco Envenenado", "Um frasco contendo um veneno mortal. Causa dano ao longo do tempo.", 3, 5, 3, eventos.get(0), batalha01, "dano", "inimigo");
                 CartaDeEfeito carta_pocao_de_cura = new CartaDeEfeito("Poção de Cura", "Uma poção que restaura a saúde do herói ao longo do tempo.", 3, 5, 3, eventos.get(0), batalha01, "cura", "heroi");
@@ -148,9 +213,9 @@ public class App {
                 System.out.println("Boa sorte na batalha, você irá precisar! ");
                 System.out.println("");
 
-                // Inicialização da batalha
-
-                batalha01.rodarBatalha(baralho, heroi, inimigos, scanner);
+                // Roda a sequencia de batalhas
+                Mapa mapa = new Mapa();
+                mapa.rodarSequnciaDeBatalhas(batalha_01, inimigos, heroi, baralho, scanner, 0);
 
                 scanner.close(); // Fecha o scanner para evitar vazamento de memoria
 
