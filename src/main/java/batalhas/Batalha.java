@@ -291,8 +291,13 @@ public class Batalha {
 
     }
 
+    /**
+     * Imprime o menu entre as batalhas
+     * @param noBatalhaAtual No da arvore de batalhas que contem a última batalha finalizada
+     * @param heroi Herói controlado pelo jogador
+     */
     void menuEntreBatalhas (DefaultMutableTreeNode noBatalhaAtual, Heroi heroi){
-        if (heroi.estarVivo()){
+        if (heroi.estarVivo() & !noBatalhaAtual.isLeaf()){
             Batalha batalhaAtual = (Batalha) noBatalhaAtual.getUserObject();
 
             DefaultMutableTreeNode noProximaBatalha1 = (DefaultMutableTreeNode) noBatalhaAtual.getChildAt(0);
@@ -307,6 +312,29 @@ public class Batalha {
             System.out.printf("2- %s\n", ProximaBatalha2.getNome());
             System.out.println("");
             System.out.println("Escolha:");
+        }
+        if (heroi.estarVivo() & noBatalhaAtual.isLeaf()) {
+            System.out.println("PARABENS, VOCÊ GANHOU O JOGO!!!");
+        }
+        else{
+            System.out.println("Você perdeu!!");
+        }
+    }
+
+    void rodarSequnciaDeBatalhas(DefaultMutableTreeNode noBatalhaInicial, List<List<Inimigo>> listaInimigos, Heroi heroi, Baralho baralho, Scanner scanner, int posicaoBatalha){
+        Batalha batalha = (Batalha) noBatalhaInicial.getUserObject();
+        batalha.rodarBatalha(baralho, heroi, listaInimigos.get(posicaoBatalha), scanner);
+        menuEntreBatalhas(noBatalhaInicial, heroi);
+        if(heroi.estarVivo() & !noBatalhaInicial.isLeaf()){
+            int escolha = scanner.nextInt();
+            if(escolha == 1){
+                DefaultMutableTreeNode noProximaBatalha = (DefaultMutableTreeNode) noBatalhaInicial.getChildAt(0);
+                rodarSequnciaDeBatalhas(noProximaBatalha, listaInimigos, heroi, baralho, scanner, 2*posicaoBatalha +1);
+            }
+            if(escolha == 2){
+                DefaultMutableTreeNode noProximaBatalha = (DefaultMutableTreeNode) noBatalhaInicial.getChildAt(1);
+                rodarSequnciaDeBatalhas(noProximaBatalha, listaInimigos, heroi, baralho, scanner, 2*posicaoBatalha + 2);
+            }
         }
     }
 
