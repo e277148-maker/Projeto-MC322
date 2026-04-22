@@ -24,7 +24,6 @@ public class Heroi extends Entidade {
  * @param efeitos Efeitos ativos no herói
  * @param vidaMaxima Vida maxima do herói
  * @param batalha Batalha ao qual o herói pertence
- * @param eventos Lista de eventos no qual efeitos são aplicados
  * @param energia Energia inicial do herói
  * @param turno Indica se é o turno do herói
  */
