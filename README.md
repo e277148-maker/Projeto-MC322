@@ -32,11 +32,11 @@ O herói começa com 100 de vida e 6 de energia por turno. O jogador deve escolh
 
 ### Compilar
 
-* javac -d bin src/*.java
+* ./gradlew build
 
 ### Executar
 
-* java -cp bin App
+* ./gradlew run
 
 ## Autores
 
