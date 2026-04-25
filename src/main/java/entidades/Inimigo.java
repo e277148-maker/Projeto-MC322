@@ -14,7 +14,7 @@ public class Inimigo extends Entidade{
     private int dano_ataque;
     private int duraçaoEfeito;
     private int danoEfeito;
-    private List <Evento> eventos;
+    private List <EventoDaBatalha> eventos;
 
     // Construtor
 /**
@@ -32,7 +32,7 @@ public class Inimigo extends Entidade{
  * @param eventos Lista de eventos no qual efeitos são aplicados
  */
     public Inimigo(String nome, String descricao, int vida, int escudo, List<Efeito> efeitos, int vidaMaxima,
-            int dano_ataque, Batalha batalha, int duraçaoEfeito, int danoEfeito, List<Evento> eventos) {
+            int dano_ataque, Batalha batalha, int duraçaoEfeito, int danoEfeito, List<EventoDaBatalha> eventos) {
 
         super(nome, descricao, vida, escudo, efeitos, vidaMaxima, batalha);
         this.dano_ataque = dano_ataque;
@@ -59,7 +59,7 @@ public class Inimigo extends Entidade{
         return danoEfeito;
     }
 
-    public List<Evento> getEventos() {
+    public List<EventoDaBatalha> getEventos() {
         return eventos;
     }
 
@@ -81,7 +81,7 @@ public class Inimigo extends Entidade{
         this.danoEfeito = danoEfeito;
     }
     
-    public void setEventos(List<Evento> eventos) {
+    public void setEventos(List<EventoDaBatalha> eventos) {
         this.eventos = eventos;
     }
 

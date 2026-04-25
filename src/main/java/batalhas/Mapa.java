@@ -24,7 +24,7 @@ public class Mapa {
      */
     public void rodarSequnciaDeBatalhas(DefaultMutableTreeNode noBatalhaInicial, List<List<Inimigo>> listaInimigos, Heroi heroi, Baralho baralho, Scanner scanner, int posicaoBatalha){
         Batalha batalha = (Batalha) noBatalhaInicial.getUserObject();
-        batalha.rodarBatalha(baralho, heroi, listaInimigos.get(posicaoBatalha), scanner);
+        batalha.iniciar(baralho, heroi, listaInimigos.get(posicaoBatalha), scanner);
         menuEntreBatalhas(noBatalhaInicial, heroi);
         if(heroi.estarVivo() & !noBatalhaInicial.isLeaf()){
             int escolha = scanner.nextInt();

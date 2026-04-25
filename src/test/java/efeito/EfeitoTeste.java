@@ -8,7 +8,7 @@ import efeitos.*;
 
 public class EfeitoTeste {
 
-    class EventoFake extends Evento {
+    class EventoFake extends EventoDaBatalha {
         public EventoFake() {
             super("EventoFake");
         }
@@ -28,7 +28,7 @@ public class EfeitoTeste {
         }
 
         @Override
-        public void serNotificado(Evento e) {}
+        public void serNotificado(EventoDaBatalha e) {}
 
         public boolean foiExecutado() {
             return executou;

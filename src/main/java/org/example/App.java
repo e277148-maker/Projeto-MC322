@@ -27,11 +27,11 @@ public class App {
 
                 // Criar eventos
 
-                Evento fimDeTurnoHeroi = new Evento("fimDeTurnoHeroi"); 
-                Evento fimDeTurnoInimigo = new Evento("fimDeTurnoInimigo");
+                EventoDaBatalha fimDeTurnoHeroi = new EventoDaBatalha("fimDeTurnoHeroi"); 
+                EventoDaBatalha fimDeTurnoInimigo = new EventoDaBatalha("fimDeTurnoInimigo");
 
                 // Criar lista de eventos
-                List <Evento> eventos = new ArrayList<>();
+                List <EventoDaBatalha> eventos = new ArrayList<>();
                 eventos.add(fimDeTurnoHeroi); // Indice 0 na lista de eventos
                 eventos.add(fimDeTurnoInimigo); // Indice 1 na lista de eventos
 
@@ -70,7 +70,7 @@ public class App {
                 // Inicializar cartas, entidades e eventos(com construtores)
                 List <Efeito> efeitos = new ArrayList<>();
 
-                Heroi heroi = new Heroi(null, null, 100, 0, efeitos, 100, 0, false, batalha01);
+                Heroi heroi = new Heroi(null, null, 100, 0, efeitos, 100, 0, false, batalha01, 0);
 
                 // Criar a lista de inimigos
                 List<Inimigo> inimigos01 = new ArrayList<>();

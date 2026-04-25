@@ -29,7 +29,7 @@ public abstract class Efeito {
     /**
      * Evento no qual o efeito será aplicado
      */
-    private Evento evento;
+    private EventoDaBatalha evento;
     /**
      * Batalha na qual o efeito pertence
      */
@@ -45,7 +45,7 @@ public abstract class Efeito {
      * @param evento Evento no qual o efeito será aplicado
      * @param batalha Batalha na qual o efeito pertence
      */
-    public Efeito(String nome, Entidade dono, int acumulo, int efeito, Evento evento, Batalha batalha) {
+    public Efeito(String nome, Entidade dono, int acumulo, int efeito, EventoDaBatalha evento, Batalha batalha) {
 
         this.nome = nome;
         this.dono = dono;
@@ -73,7 +73,7 @@ public abstract class Efeito {
         return efeito;
     }
 
-    public Evento getEvento() {
+    public EventoDaBatalha getEvento() {
         return evento;
     }
     
@@ -99,7 +99,7 @@ public abstract class Efeito {
         this.efeito = efeito;
     }
 
-    public void setEvento(Evento evento) {
+    public void setEvento(EventoDaBatalha evento) {
         this.evento = evento;
     }
     
@@ -121,7 +121,7 @@ public abstract class Efeito {
      * Aplica o efeito se o evento que aconteceu for o evento no qual o efeito deve ser notificado
      * @param eventoAtual Evento que ocorreu
      */
-    public void serNotificado(Evento eventoAtual){
+    public void serNotificado(EventoDaBatalha eventoAtual){
 
         if (this.evento == eventoAtual){
             aplicarEfeito();

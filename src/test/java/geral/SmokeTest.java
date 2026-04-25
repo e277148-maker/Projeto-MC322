@@ -17,7 +17,7 @@ public class SmokeTest {
         }
     }
 
-    class EventoFake extends Evento {
+    class EventoFake extends EventoDaBatalha {
         public EventoFake() {
             super("EventoFake");
         }
@@ -37,7 +37,7 @@ public class SmokeTest {
 
         Batalha batalha = new BatalhaFake();
 
-        List<Evento> eventos = new ArrayList<>();
+        List<EventoDaBatalha> eventos = new ArrayList<>();
         eventos.add(new EventoFake());
         eventos.add(new EventoFake());
 

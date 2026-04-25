@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import entidades.Heroi;
 import entidades.Inimigo;
 import batalhas.Batalha;
-import batalhas.Evento;
+import batalhas.EventoDaBatalha;
 import cartas.Carta;
 
 public class CartaTeste {
@@ -19,7 +19,7 @@ public class CartaTeste {
         }
     }
 
-    class EventoFake extends Evento {
+    class EventoFake extends EventoDaBatalha {
         public EventoFake() {
             super("EventoFake"); // ajusta se necessário
         }

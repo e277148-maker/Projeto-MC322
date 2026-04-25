@@ -16,7 +16,7 @@ public class CartaDeEfeito extends Carta {
     /**
      * Evento no qual será aplicado o efeito
      */
-    private Evento evento;
+    private EventoDaBatalha evento;
     /**
      * Batalha na qual o efeito pertence
      */
@@ -42,7 +42,7 @@ public class CartaDeEfeito extends Carta {
      * @param tipoEfeito Tipo do efeito
      * @param alvoEfeito Alvo do efeito
      */
-    public CartaDeEfeito(String nome, String descricao, int custo, int efeito, int acumulo, Evento evento, Batalha batalha, String tipoEfeito, String alvoEfeito) {
+    public CartaDeEfeito(String nome, String descricao, int custo, int efeito, int acumulo, EventoDaBatalha evento, Batalha batalha, String tipoEfeito, String alvoEfeito) {
 
         super(nome, descricao, custo, efeito);
 
@@ -60,7 +60,7 @@ public class CartaDeEfeito extends Carta {
         return acumulo;
     }
 
-    public Evento getEvento() {
+    public EventoDaBatalha getEvento() {
             return evento;
     }
         
@@ -81,7 +81,7 @@ public class CartaDeEfeito extends Carta {
         this.acumulo = acumulo;
     }
 
-    public void setEvento(Evento evento) {
+    public void setEvento(EventoDaBatalha evento) {
         this.evento = evento;
     }
     

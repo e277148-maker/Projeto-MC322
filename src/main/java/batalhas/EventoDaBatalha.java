@@ -4,7 +4,7 @@ package batalhas;
 /**
  * Gerencia os eventos
  */
-public class Evento {
+public class EventoDaBatalha {
 
     // Atributos
     /**
@@ -17,7 +17,7 @@ public class Evento {
      * Cria um evento com um nome
      * @param nome Nome do evento
      */
-    public Evento(String nome) {
+    public EventoDaBatalha(String nome) {
         this.nome = nome;
     }
 

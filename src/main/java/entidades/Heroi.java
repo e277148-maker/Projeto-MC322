@@ -13,6 +13,7 @@ public class Heroi extends Entidade {
 
     private int energia;
     private boolean turno;
+    private int ouro;
 
     // Construtor
 /**
@@ -26,13 +27,15 @@ public class Heroi extends Entidade {
  * @param batalha Batalha ao qual o herói pertence
  * @param energia Energia inicial do herói
  * @param turno Indica se é o turno do herói
+ * @param ouro Indica a quantidade de dinheiro do herói
  */
     public Heroi(String nome, String descricao, int vida, int escudo, List<Efeito> efeitos, int vidaMaxima, int energia,
-            boolean turno, Batalha batalha) {
+            boolean turno, Batalha batalha, int ouro) {
 
         super(nome, descricao, vida, escudo, efeitos, vidaMaxima, batalha);
         this.energia = energia;
         this.turno = turno;
+        this.ouro = ouro;
 
     }
 
@@ -45,6 +48,10 @@ public class Heroi extends Entidade {
     public boolean getTurno(){
         return turno;
     }
+    
+    public int getOuro() {
+        return ouro;
+    }
 
     // Setters
 
@@ -55,6 +62,10 @@ public class Heroi extends Entidade {
     public void setEnergia(int energia){
         this.energia = energia;
     }
+    
+    public void setOuro(int ouro) {
+        this.ouro = ouro;
+    }
 
     // Outros metodos
     /**
@@ -64,5 +75,9 @@ public class Heroi extends Entidade {
     public void perderEnergia(int gasto){
         energia -= gasto;
     }
+
+    
+
+    
 
 }

@@ -9,12 +9,12 @@ import entidades.*;
 import efeitos.*;
 import baralho.*;
 import batalhas.Batalha;
-import batalhas.Evento;
+import batalhas.EventoDaBatalha;
 import cartas.*;
 
 public class BatalhaTeste {
 
-    class EventoFake extends Evento {
+    class EventoFake extends EventoDaBatalha {
         public EventoFake() {
             super("EventoFake");
         }
@@ -30,7 +30,7 @@ public class BatalhaTeste {
         public void aplicarEfeito() {}
 
         @Override
-        public void serNotificado(Evento e) {}
+        public void serNotificado(EventoDaBatalha e) {}
     }
 
     class CartaFake extends Carta {
@@ -47,7 +47,7 @@ public class BatalhaTeste {
     @Test
     void testPublisherSistema() {
         List<Efeito> efeitos = new ArrayList<>();
-        List<Evento> eventos = new ArrayList<>();
+        List<EventoDaBatalha> eventos = new ArrayList<>();
         String nome = "NomeTeste";
         eventos.add(new EventoFake());
 
@@ -66,7 +66,7 @@ public class BatalhaTeste {
     void testGettersSetters() {
         Batalha b = new Batalha(new ArrayList<>(), new ArrayList<>(), "NomeTeste");
 
-        List<Evento> eventos = new ArrayList<>();
+        List<EventoDaBatalha> eventos = new ArrayList<>();
         List<Efeito> efeitos = new ArrayList<>();
 
         b.setEventos(eventos);
@@ -80,7 +80,7 @@ public class BatalhaTeste {
     void testRodarBatalhaSaiRapido() {
 
         // eventos obrigatórios (usa index 0 e 1!)
-        List<Evento> eventos = new ArrayList<>();
+        List<EventoDaBatalha> eventos = new ArrayList<>();
         eventos.add(new EventoFake());
         eventos.add(new EventoFake());
 
@@ -97,7 +97,7 @@ public class BatalhaTeste {
             batalha
         );
 
-        List<Evento> eventosInimigo = new ArrayList<>();
+        List<EventoDaBatalha> eventosInimigo = new ArrayList<>();
         eventosInimigo.add(new EventoFake());
         eventosInimigo.add(new EventoFake());
 

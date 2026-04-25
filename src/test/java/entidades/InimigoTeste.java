@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import batalhas.Batalha;
-import batalhas.Evento;
+import batalhas.EventoDaBatalha;
 
 public class InimigoTeste {
 
@@ -17,7 +17,7 @@ public class InimigoTeste {
         }
     }
 
-    class EventoFake extends Evento {
+    class EventoFake extends EventoDaBatalha {
         public EventoFake() {
             super("EventoFake");
         }
@@ -75,7 +75,7 @@ public class InimigoTeste {
         Batalha batalha = new BatalhaFake();
         Heroi heroi = new HeroiFake(batalha);
 
-        List<Evento> eventos = new ArrayList<>();
+        List<EventoDaBatalha> eventos = new ArrayList<>();
         eventos.add(new EventoFake());
 
         Inimigo inimigo = new Inimigo(
@@ -93,7 +93,7 @@ public class InimigoTeste {
     void testCurarNaoQuebra() {
         Batalha batalha = new BatalhaFake();
 
-        List<Evento> eventos = new ArrayList<>();
+        List<EventoDaBatalha> eventos = new ArrayList<>();
         eventos.add(new EventoFake());
         eventos.add(new EventoFake()); // importante (índice 1)
 

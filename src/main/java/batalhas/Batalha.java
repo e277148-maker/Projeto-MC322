@@ -16,7 +16,7 @@ import baralho.*;
 /**
  * Gerencia as batalhas
  */
-public class Batalha {
+public class Batalha extends Eventos {
 
     // Atributos
     /**
@@ -26,7 +26,7 @@ public class Batalha {
     /**
      * Lista de eventos importantes de uma batalha
      */
-    private List <Evento> eventos;
+    private List <EventoDaBatalha> eventos;
     /**
      * Nome da batalha
      */
@@ -39,7 +39,7 @@ public class Batalha {
     * @param eventos Lista de eventos importantes de uma batalha
     * @param nome Nome da batalha
     */
-    public Batalha(List<Efeito> subscribersEfeito, List<Evento> eventos, String nome) {
+    public Batalha(List<Efeito> subscribersEfeito, List<EventoDaBatalha> eventos, String nome) {
         this.subscribersEfeito = subscribersEfeito;
         this.eventos = eventos;
         this.nome = nome;
@@ -51,8 +51,8 @@ public class Batalha {
      * @param inimigos Lista de inimigos que lutarão contra o herói
      * @param scanner Scanner utilizado para o jogo ser iterativo
      */
-
-    public void rodarBatalha(Baralho baralho, Heroi heroi, List<Inimigo> inimigos, Scanner scanner) {
+    @Override
+    public void iniciar(Baralho baralho, Heroi heroi, List<Inimigo> inimigos, Scanner scanner) {
 
         int defesaInimigo = 15;
         ponto_controle:
@@ -72,7 +72,7 @@ public class Batalha {
 
             while (heroi.getTurno()) { // Loop de escolhas do herói
 
-                imprimirMenu(baralho, heroi, inimigos);
+                menu(baralho, heroi, inimigos);
 
                 int escolha = scanner.nextInt();
                 int opcaoEncerrar = baralho.getMao().size();
@@ -224,7 +224,8 @@ public class Batalha {
      * @param heroi Personagem controlado pelo jogador
      * @param inimigos Lista de inimigos que lutarão contra o herói
      */
-    public void imprimirMenu(Baralho baralho, Heroi heroi, List<Inimigo> inimigos){
+    @Override
+    public void menu(Baralho baralho, Heroi heroi, List<Inimigo> inimigos){
 
         System.out.println("===============================================================================");
         System.out.println("Cartas no Baralho: " + baralho.getPilhaDeCompras().size() + " | Cartas no Descarte: " + baralho.getPilhaDeDescarte().size());
@@ -350,7 +351,7 @@ public class Batalha {
      * Notifica os efeitos que devem ser notificados quando um certo envento ocorre
      * @param eventoAtual Evento que ocorreu
      */
-    private void notificar(Evento eventoAtual){
+    private void notificar(EventoDaBatalha eventoAtual){
 
         List<Efeito> copiaSubscribers = new java.util.ArrayList<>(subscribersEfeito);
 
@@ -361,7 +362,7 @@ public class Batalha {
     }
 
     // Getters
-    public List<Evento> getEventos() {
+    public List<EventoDaBatalha> getEventos() {
         return eventos;
     }
     
@@ -374,7 +375,7 @@ public class Batalha {
     }
 
     // Setters
-    public void setEventos(List<Evento> eventos) {
+    public void setEventos(List<EventoDaBatalha> eventos) {
         this.eventos = eventos;
     }
 

@@ -17,7 +17,7 @@ public class Cura extends Efeito {
  * @param evento Evento no qual o efeito será aplicado
  * @param batalha Batalha ao qual o efeito pertence
  */
-    public Cura(String nome, Entidade dono, int acumulo, int efeito, Evento evento, Batalha batalha) {
+    public Cura(String nome, Entidade dono, int acumulo, int efeito, EventoDaBatalha evento, Batalha batalha) {
         super(nome, dono, acumulo, efeito, evento, batalha);
     }
 
