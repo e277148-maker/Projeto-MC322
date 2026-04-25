@@ -34,7 +34,7 @@ class EfeitoFake extends Efeito {
     @Test
     void testAplicarEfeitoNovo() {
         List<Efeito> efeitos = new ArrayList<>();
-        Batalha batalha = new Batalha(new ArrayList<>(), new ArrayList<>());
+        Batalha batalha = new Batalha(new ArrayList<>(), new ArrayList<>(), "NomeTeste");
 
         Entidade e = new EntidadeFake(100, 0, efeitos, batalha);
 
@@ -48,7 +48,7 @@ class EfeitoFake extends Efeito {
     @Test
     void testAcumularEfeito() {
         List<Efeito> efeitos = new ArrayList<>();
-        Batalha batalha = new Batalha(new ArrayList<>(), new ArrayList<>());
+        Batalha batalha = new Batalha(new ArrayList<>(), new ArrayList<>(), "NomeTeste");
 
         Entidade e = new EntidadeFake(100, 0, efeitos, batalha);
 

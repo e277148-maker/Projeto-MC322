@@ -13,7 +13,7 @@ public class SmokeTest {
 
     class BatalhaFake extends Batalha {
         public BatalhaFake() {
-            super(new ArrayList<>(), new ArrayList<>());
+            super(new ArrayList<>(), new ArrayList<>(), "NomeTeste");
         }
     }
 

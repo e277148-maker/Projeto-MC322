@@ -48,9 +48,10 @@ public class BatalhaTeste {
     void testPublisherSistema() {
         List<Efeito> efeitos = new ArrayList<>();
         List<Evento> eventos = new ArrayList<>();
+        String nome = "NomeTeste";
         eventos.add(new EventoFake());
 
-        Batalha batalha = new Batalha(efeitos, eventos);
+        Batalha batalha = new Batalha(efeitos, eventos, nome);
 
         EfeitoFake efeito = new EfeitoFake();
 
@@ -63,7 +64,7 @@ public class BatalhaTeste {
 
     @Test
     void testGettersSetters() {
-        Batalha b = new Batalha(new ArrayList<>(), new ArrayList<>());
+        Batalha b = new Batalha(new ArrayList<>(), new ArrayList<>(), "NomeTeste");
 
         List<Evento> eventos = new ArrayList<>();
         List<Efeito> efeitos = new ArrayList<>();
@@ -83,7 +84,7 @@ public class BatalhaTeste {
         eventos.add(new EventoFake());
         eventos.add(new EventoFake());
 
-        Batalha batalha = new Batalha(new ArrayList<>(), eventos);
+        Batalha batalha = new Batalha(new ArrayList<>(), eventos, "NomeTeste");
 
         Heroi heroi = new Heroi(
             "Heroi", "desc",

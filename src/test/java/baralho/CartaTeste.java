@@ -15,7 +15,7 @@ public class CartaTeste {
 
     class BatalhaFake extends Batalha {
         public BatalhaFake() {
-            super(new ArrayList<>(), new ArrayList<>());
+            super(new ArrayList<>(), new ArrayList<>(), new String());
         }
     }
 
