@@ -31,6 +31,10 @@ public class Batalha extends Eventos {
      * Nome da batalha
      */
     private String nome;
+    /**
+     * Inimigos da batalha
+     */
+    private List <Inimigo> inimigos;
 
     // Construtor
    /**
@@ -39,10 +43,11 @@ public class Batalha extends Eventos {
     * @param eventos Lista de eventos importantes de uma batalha
     * @param nome Nome da batalha
     */
-    public Batalha(List<Efeito> subscribersEfeito, List<EventoDaBatalha> eventos, String nome) {
+    public Batalha(List<Efeito> subscribersEfeito, List<EventoDaBatalha> eventos, String nome, List<Inimigo> inimigos) {
         this.subscribersEfeito = subscribersEfeito;
         this.eventos = eventos;
         this.nome = nome;
+        this.inimigos = inimigos;
     }
     /**
      * Cria e gerencia uma batalha entre um herói e um ou mais inimigos
@@ -52,7 +57,7 @@ public class Batalha extends Eventos {
      * @param scanner Scanner utilizado para o jogo ser iterativo
      */
     @Override
-    public void iniciar(Baralho baralho, Heroi heroi, List<Inimigo> inimigos, Scanner scanner) {
+    public void iniciar(Baralho baralho, Heroi heroi, Scanner scanner) {
 
         int defesaInimigo = 15;
         ponto_controle:
@@ -72,7 +77,7 @@ public class Batalha extends Eventos {
 
             while (heroi.getTurno()) { // Loop de escolhas do herói
 
-                menu(baralho, heroi, inimigos);
+                menu(baralho, heroi);
 
                 int escolha = scanner.nextInt();
                 int opcaoEncerrar = baralho.getMao().size();
@@ -225,7 +230,7 @@ public class Batalha extends Eventos {
      * @param inimigos Lista de inimigos que lutarão contra o herói
      */
     @Override
-    public void menu(Baralho baralho, Heroi heroi, List<Inimigo> inimigos){
+    public void menu(Baralho baralho, Heroi heroi){
 
         System.out.println("===============================================================================");
         System.out.println("Cartas no Baralho: " + baralho.getPilhaDeCompras().size() + " | Cartas no Descarte: " + baralho.getPilhaDeDescarte().size());
@@ -373,6 +378,10 @@ public class Batalha extends Eventos {
     public String getNome() {
         return nome;
     }
+    
+    public List<Inimigo> getInimigos() {
+        return inimigos;
+    }
 
     // Setters
     public void setEventos(List<EventoDaBatalha> eventos) {
@@ -385,5 +394,9 @@ public class Batalha extends Eventos {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    
+    public void setInimigos(List<Inimigo> inimigos) {
+        this.inimigos = inimigos;
     }
 }

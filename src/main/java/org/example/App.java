@@ -37,14 +37,15 @@ public class App {
 
                 // Criar batalha
                 List <Efeito> subscribersEfeito = new ArrayList<>();
+                List <Inimigo> listaProvisoria = new ArrayList<>();
 
-                Batalha batalha01 = new Batalha(subscribersEfeito, eventos, "batalha01");
-                Batalha batalha11 = new Batalha(subscribersEfeito, eventos, "batalha11");
-                Batalha batalha12 = new Batalha(subscribersEfeito, eventos, "batalha12");
-                Batalha batalha21 = new Batalha(subscribersEfeito, eventos, "batalha21");
-                Batalha batalha22 = new Batalha(subscribersEfeito, eventos, "batalha22");
-                Batalha batalha23 = new Batalha(subscribersEfeito, eventos, "batalha23");
-                Batalha batalha24 = new Batalha(subscribersEfeito, eventos, "batalha24");
+                Batalha batalha01 = new Batalha(subscribersEfeito, eventos, "batalha01", listaProvisoria);
+                Batalha batalha11 = new Batalha(subscribersEfeito, eventos, "batalha11", listaProvisoria);
+                Batalha batalha12 = new Batalha(subscribersEfeito, eventos, "batalha12", listaProvisoria);
+                Batalha batalha21 = new Batalha(subscribersEfeito, eventos, "batalha21",listaProvisoria);
+                Batalha batalha22 = new Batalha(subscribersEfeito, eventos, "batalha22", listaProvisoria);
+                Batalha batalha23 = new Batalha(subscribersEfeito, eventos, "batalha23", listaProvisoria);
+                Batalha batalha24 = new Batalha(subscribersEfeito, eventos, "batalha24", listaProvisoria);
 
                 // Criar arvore de batalhas
 
@@ -115,30 +116,37 @@ public class App {
                 inimigos01.add(goblin);
                 inimigos01.add(orc1);
                 inimigos01.add(slime);
+                batalha01.setInimigos(inimigos01);
 
                 inimigos11.add(rato1);
                 inimigos11.add(rato2);
                 inimigos11.add(escorpião);
+                batalha11.setInimigos(inimigos11);
 
                 inimigos12.add(orc2);
                 inimigos12.add(orc3);
                 inimigos12.add(orc4);
+                batalha12.setInimigos(inimigos12);
 
                 inimigos21.add(bandoDeGoblins1);
                 inimigos21.add(bandoDeGoblins2);
                 inimigos21.add(aranhaGigante);
+                batalha21.setInimigos(inimigos21);
 
                 inimigos22.add(gigante);
                 inimigos22.add(bruxa1);
                 inimigos22.add(bruxa2);
+                batalha22.setInimigos(inimigos22);
 
                 inimigos23.add(dragao1);
                 inimigos23.add(dragao2);
                 inimigos23.add(dragao3);
+                batalha23.setInimigos(inimigos23);
 
                 inimigos24.add(bandoDeOrcs1);
                 inimigos24.add(bandoDeOrcs2);
                 inimigos24.add(bandoDeOrcs3);
+                batalha24.setInimigos(inimigos24);
 
                 inimigos.add(inimigos01);
                 inimigos.add(inimigos11);
@@ -215,7 +223,7 @@ public class App {
 
                 // Roda a sequencia de batalhas
                 Mapa mapa = new Mapa();
-                mapa.rodarSequnciaDeBatalhas(batalha_01, inimigos, heroi, baralho, scanner, 0);
+                mapa.rodarSequnciaDeBatalhas(batalha_01, heroi, baralho, scanner);
 
                 scanner.close(); // Fecha o scanner para evitar vazamento de memoria
 

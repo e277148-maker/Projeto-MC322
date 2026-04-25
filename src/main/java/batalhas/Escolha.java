@@ -6,17 +6,16 @@ import java.util.Scanner;
 
 import baralho.Baralho;
 import entidades.Heroi;
-import entidades.Inimigo;
 import cartas.Carta;
 
 public class Escolha extends Eventos{
     private List <Carta> cartasForaDoBaralho = new ArrayList<>();
 
-    public void iniciar(Baralho baralho, Heroi heroi, List<Inimigo> inimigos, Scanner scanner){
+    public void iniciar(Baralho baralho, Heroi heroi, Scanner scanner){
 
     }
 
-    public void menu(Baralho baralho, Heroi heroi, List<Inimigo> inimigos){
-        
+    public void menu(Baralho baralho, Heroi heroi){
+
     }
 }

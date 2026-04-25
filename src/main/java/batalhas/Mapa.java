@@ -1,13 +1,12 @@
 package batalhas;
 
-import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import baralho.Baralho;
 import entidades.Heroi;
-import entidades.Inimigo;
+
 /**
  * Gerencia o sistema de progresão com varias batalhas
  */
@@ -22,19 +21,19 @@ public class Mapa {
      * @param scanner Utilizado para receber inputs do jogador
      * @param posicaoBatalha Posição da batalha na arvore de batalhas
      */
-    public void rodarSequnciaDeBatalhas(DefaultMutableTreeNode noBatalhaInicial, List<List<Inimigo>> listaInimigos, Heroi heroi, Baralho baralho, Scanner scanner, int posicaoBatalha){
+    public void rodarSequnciaDeBatalhas(DefaultMutableTreeNode noBatalhaInicial, Heroi heroi, Baralho baralho, Scanner scanner){
         Batalha batalha = (Batalha) noBatalhaInicial.getUserObject();
-        batalha.iniciar(baralho, heroi, listaInimigos.get(posicaoBatalha), scanner);
+        batalha.iniciar(baralho, heroi, scanner);
         menuEntreBatalhas(noBatalhaInicial, heroi);
         if(heroi.estarVivo() & !noBatalhaInicial.isLeaf()){
             int escolha = scanner.nextInt();
             if(escolha == 1){
                 DefaultMutableTreeNode noProximaBatalha = (DefaultMutableTreeNode) noBatalhaInicial.getChildAt(0);
-                rodarSequnciaDeBatalhas(noProximaBatalha, listaInimigos, heroi, baralho, scanner, 2*posicaoBatalha +1);
+                rodarSequnciaDeBatalhas(noProximaBatalha, heroi, baralho, scanner);
             }
             if(escolha == 2){
                 DefaultMutableTreeNode noProximaBatalha = (DefaultMutableTreeNode) noBatalhaInicial.getChildAt(1);
-                rodarSequnciaDeBatalhas(noProximaBatalha, listaInimigos, heroi, baralho, scanner, 2*posicaoBatalha + 2);
+                rodarSequnciaDeBatalhas(noProximaBatalha, heroi, baralho, scanner);
             }
         }
     }
