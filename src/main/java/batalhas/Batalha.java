@@ -6,6 +6,7 @@ package batalhas;
 
 import java.util.Random;
 import java.util.Scanner;
+
 import java.util.List;
 
 import efeitos.*;
@@ -26,16 +27,22 @@ public class Batalha {
      * Lista de eventos importantes de uma batalha
      */
     private List <Evento> eventos;
+    /**
+     * Nome da batalha
+     */
+    private String nome;
 
     // Construtor
    /**
     * Inicializa uma batalha 
     * @param subscribersEfeito Lista de efeitos que a classe notifica quando ocorre um evento
     * @param eventos Lista de eventos importantes de uma batalha
+    * @param nome Nome da batalha
     */
-    public Batalha(List<Efeito> subscribersEfeito, List<Evento> eventos) {
+    public Batalha(List<Efeito> subscribersEfeito, List<Evento> eventos, String nome) {
         this.subscribersEfeito = subscribersEfeito;
         this.eventos = eventos;
+        this.nome = nome;
     }
     /**
      * Cria e gerencia uma batalha entre um herói e um ou mais inimigos
@@ -282,6 +289,8 @@ public class Batalha {
 
     }
 
+    
+
     // --- MÉTODOS AUXILIARES PARA LIDAR COM A LISTA DE INIMIGOS ---
 
     /**
@@ -360,6 +369,10 @@ public class Batalha {
         return subscribersEfeito;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     // Setters
     public void setEventos(List<Evento> eventos) {
         this.eventos = eventos;
@@ -367,5 +380,9 @@ public class Batalha {
 
     public void setSubscribersEfeito(List<Efeito> subscribersEfeito) {
         this.subscribersEfeito = subscribersEfeito;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }
