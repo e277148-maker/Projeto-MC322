@@ -3,7 +3,8 @@
 package efeitos;
 
 import entidades.*;
-import batalhas.*;
+import eventos.batalha.Batalha;
+import eventos.batalha.EventoDaBatalha;
 /**
  * Gerencia os efeitos de veneno
  */

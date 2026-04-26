@@ -3,8 +3,8 @@ package efeito;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-import batalhas.*;
 import efeitos.*;
+import eventos.*;
 
 public class EfeitoTeste {
 

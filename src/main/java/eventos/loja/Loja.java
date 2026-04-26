@@ -1,4 +1,4 @@
-package batalhas;
+package eventos.loja;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,7 @@ import java.util.Scanner;
 import baralho.Baralho;
 import cartas.Carta;
 import entidades.Heroi;
+import eventos.Eventos;
 /**
  * Gerencia a loja
  */
@@ -33,26 +34,23 @@ public class Loja extends Eventos {
      * @param scanner scaner que permite o jogo ser
      */
     public void iniciar(Baralho baralho, Heroi heroi, Scanner scanner){
+        Curar poçãoDeCura = new Curar();
+        ComprarCarta comprarCarta = new ComprarCarta(cartas.get(0));
         boolean continuar = true;
         while(continuar == true){
             menu(baralho, heroi);
             int escolha = scanner.nextInt();
             if (escolha == 1){
-                if(heroi.getOuro() >= 25){
-                    heroi.setVida(heroi.getVidaMaxima());
-                    heroi.perderEnergia(25);
+                if(heroi.getOuro() >= poçãoDeCura.getPreco()){
+                    poçãoDeCura.aplicar(heroi);
                 }
                 else{
                     System.out.println("Você não tem ouro suficiente");
                 }
             }
             if (escolha == 2){
-                if (heroi.getOuro() >= 10){
-                    List <Carta> pilhaDeCompra = baralho.getPilhaDeCompras();
-                    pilhaDeCompra.add(cartas.get(0));
-                    baralho.setPilhaDeCompra(pilhaDeCompra);
-                    cartas.remove(0); 
-                    heroi.perderEnergia(10); 
+                if (heroi.getOuro() >= comprarCarta.getPreco()){
+                    comprarCarta.aplicar(heroi);
                 }
                 
             }

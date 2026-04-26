@@ -1,4 +1,4 @@
-package batalhas;
+package eventos;
 
 import java.util.Scanner;
 

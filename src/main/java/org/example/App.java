@@ -11,11 +11,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import batalhas.*;
 import cartas.*;
 import efeitos.Efeito;
 import entidades.Heroi;
 import entidades.Inimigo;
+import eventos.*;
+import eventos.batalha.Batalha;
+import eventos.batalha.EventoDaBatalha;
+import eventos.fogueira.Fogueira;
+import eventos.loja.Loja;
 import baralho.Baralho;
 /**
  * Roda o código principal
@@ -71,7 +75,7 @@ public class App {
                 // Inicializar cartas, entidades e eventos(com construtores)
                 List <Efeito> efeitos = new ArrayList<>();
 
-                Heroi heroi = new Heroi(null, null, 100, 0, efeitos, 100, 0, false, batalha01, 0);
+                Heroi heroi = new Heroi(null, null, 100, 0, efeitos, 100, 0, false, batalha01, 0, null, 6, 0);
 
                 // Criar a lista de inimigos
                 List<Inimigo> inimigos01 = new ArrayList<>();
@@ -206,6 +210,8 @@ public class App {
                 List<Carta> pilhaDeDescarte = new ArrayList<>();
 
                 Baralho baralho = new Baralho(pilhaDeCompra, pilhaDeDescarte, mao);
+
+                heroi.setBaralho(baralho);
                 // Criar loja
                 List<Carta> cartas = new ArrayList<>();
 
@@ -216,7 +222,12 @@ public class App {
                 cartas.add(carta_soro_de_resistencia);
                 cartas.add(carta_adaga_envenenada);
                 cartas.add(carta_curativo);
-                 Loja loja = new Loja(cartas);
+
+                Loja loja = new Loja(cartas);
+
+                // Criar fogueira
+
+                Fogueira fogueira = new Fogueira();
 
 
 
@@ -236,7 +247,7 @@ public class App {
 
                 // Roda a sequencia de batalhas
                 Mapa mapa = new Mapa();
-                mapa.rodarSequnciaDeBatalhas(batalha_01, heroi, baralho, scanner, loja);
+                mapa.rodarSequnciaDeBatalhas(batalha_01, heroi, baralho, scanner, loja, fogueira);
 
                 scanner.close(); // Fecha o scanner para evitar vazamento de memoria
 

@@ -2,7 +2,7 @@
 // e gerenciando as ações de ambos. Ela também implementa o padrão Publisher para notificar os efeitos ativos
 // sobre eventos específicos durante a batalha.
 
-package batalhas;
+package eventos.batalha;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -12,6 +12,7 @@ import java.util.List;
 import efeitos.*;
 import cartas.*;
 import entidades.*;
+import eventos.Eventos;
 import baralho.*;
 /**
  * Gerencia as batalhas
@@ -67,8 +68,8 @@ public class Batalha extends Eventos {
 
             // reseta escudo e energia do heroi no inicio do turno
             heroi.setTurno(true);
-            heroi.setEscudo(0);
-            heroi.setEnergia(6);
+            heroi.setEscudo(heroi.getEscudoInicial());
+            heroi.setEnergia(heroi.getEnergiaMaxima());
 
             // Compra as cartas no inicio do turno do heroi
             while (baralho.getMao().size() < 5 && (!baralho.getPilhaDeCompras().isEmpty() || !baralho.getPilhaDeDescarte().isEmpty())) {

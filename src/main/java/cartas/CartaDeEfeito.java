@@ -2,9 +2,10 @@
 
 package cartas;
 
-import batalhas.*;
 import efeitos.*;
 import entidades.*;
+import eventos.batalha.Batalha;
+import eventos.batalha.EventoDaBatalha;
 /**
  * Gerencia as cartas de efeitos
  */

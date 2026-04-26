@@ -1,6 +1,6 @@
 // Este código define a classe Evento, que representa um evento ou ação que pode ocorrer durante as batalhas no jogo. 
 
-package batalhas;
+package eventos.batalha;
 /**
  * Gerencia os eventos durante uma batalha
  */

@@ -2,8 +2,9 @@
 
 package efeitos;
 
-import batalhas.*;
 import entidades.Entidade;
+import eventos.batalha.Batalha;
+import eventos.batalha.EventoDaBatalha;
 /**
  * Gerencia os efeitos de cura
  */

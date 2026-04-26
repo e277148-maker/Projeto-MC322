@@ -4,8 +4,8 @@ package entidades;
 
 import java.util.List;
 
-import batalhas.*;
 import efeitos.Efeito;
+import eventos.batalha.Batalha;
 
 /**
  * Gerencia uma entidade
