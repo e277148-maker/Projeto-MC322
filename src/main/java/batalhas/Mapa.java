@@ -21,19 +21,22 @@ public class Mapa {
      * @param scanner Utilizado para receber inputs do jogador
      * @param posicaoBatalha Posição da batalha na arvore de batalhas
      */
-    public void rodarSequnciaDeBatalhas(DefaultMutableTreeNode noBatalhaInicial, Heroi heroi, Baralho baralho, Scanner scanner){
+    public void rodarSequnciaDeBatalhas(DefaultMutableTreeNode noBatalhaInicial, Heroi heroi, Baralho baralho, Scanner scanner, Loja loja){
         Batalha batalha = (Batalha) noBatalhaInicial.getUserObject();
         batalha.iniciar(baralho, heroi, scanner);
+        if (heroi.estarVivo() & !noBatalhaInicial.isLeaf()){
+            loja.iniciar(baralho, heroi, scanner);
+        }
         menuEntreBatalhas(noBatalhaInicial, heroi);
         if(heroi.estarVivo() & !noBatalhaInicial.isLeaf()){
             int escolha = scanner.nextInt();
             if(escolha == 1){
                 DefaultMutableTreeNode noProximaBatalha = (DefaultMutableTreeNode) noBatalhaInicial.getChildAt(0);
-                rodarSequnciaDeBatalhas(noProximaBatalha, heroi, baralho, scanner);
+                rodarSequnciaDeBatalhas(noProximaBatalha, heroi, baralho, scanner, loja);
             }
             if(escolha == 2){
                 DefaultMutableTreeNode noProximaBatalha = (DefaultMutableTreeNode) noBatalhaInicial.getChildAt(1);
-                rodarSequnciaDeBatalhas(noProximaBatalha, heroi, baralho, scanner);
+                rodarSequnciaDeBatalhas(noProximaBatalha, heroi, baralho, scanner, loja);
             }
         }
     }

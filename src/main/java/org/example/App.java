@@ -206,6 +206,16 @@ public class App {
                 List<Carta> pilhaDeDescarte = new ArrayList<>();
 
                 Baralho baralho = new Baralho(pilhaDeCompra, pilhaDeDescarte, mao);
+                // Criar loja
+                List<Carta> cartas = new ArrayList<>();
+
+                CartaDeEfeito carta_adaga_envenenada = new CartaDeEfeito("Adaga envenenada", "Uma adaga com veneno. Causa dano ao longo do tempo.", 2, 5, 3, eventos.get(0), batalha01, "dano", "inimigo");
+                CartaDeEfeito carta_curativo = new CartaDeEfeito("Curativo", "Um curativo que restaura a saúde do herói ao longo do tempo.", 2, 5, 3, eventos.get(0), batalha01, "cura", "heroi");
+                CartaDeEfeito carta_soro_de_resistencia = new CartaDeEfeito("Soro de resistencia", "Um soro que restaura a saúde do herói e aumenta a sua resistencia", 1, 4, 2, eventos.get(0), batalha01, "cura", "heroi");
+
+                cartas.add(carta_soro_de_resistencia);
+                cartas.add(carta_adaga_envenenada);
+                cartas.add(carta_curativo);
 
                 // Escolher o nome do heroi
 

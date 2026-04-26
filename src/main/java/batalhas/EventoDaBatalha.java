@@ -2,7 +2,7 @@
 
 package batalhas;
 /**
- * Gerencia os eventos
+ * Gerencia os eventos durante uma batalha
  */
 public class EventoDaBatalha {
 
