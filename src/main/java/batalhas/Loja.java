@@ -19,12 +19,18 @@ public class Loja extends Eventos {
     private List <Carta> cartas = new ArrayList<>();
     
     // Metodos
-
     /**
      * Cria uma loja
+     * @param cartas Cartas que podem ser adicionadas no baralho por meio de compras na loja
+     */
+    public Loja(List<Carta> cartas) {
+        this.cartas = cartas;
+    }
+    /**
+     * Inicia o evento de uma loja
      * @param baralho baralho do jogador
      * @param heroi heroi controlado pelo jogador
-     * @param scanner scaner que permite o jogo ser interativo
+     * @param scanner scaner que permite o jogo ser
      */
     public void iniciar(Baralho baralho, Heroi heroi, Scanner scanner){
         boolean continuar = true;

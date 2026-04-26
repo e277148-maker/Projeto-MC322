@@ -216,6 +216,9 @@ public class App {
                 cartas.add(carta_soro_de_resistencia);
                 cartas.add(carta_adaga_envenenada);
                 cartas.add(carta_curativo);
+                 Loja loja = new Loja(cartas);
+
+
 
                 // Escolher o nome do heroi
 
@@ -233,7 +236,7 @@ public class App {
 
                 // Roda a sequencia de batalhas
                 Mapa mapa = new Mapa();
-                mapa.rodarSequnciaDeBatalhas(batalha_01, heroi, baralho, scanner);
+                mapa.rodarSequnciaDeBatalhas(batalha_01, heroi, baralho, scanner, loja);
 
                 scanner.close(); // Fecha o scanner para evitar vazamento de memoria
 
