@@ -1,8 +1,8 @@
-package eventos.fogueira;
+package eventos.escolha;
 
 import entidades.Heroi;
 
-public class MaisOuro implements ItemFogueira {
+public class MaisOuro implements ItemEscolha {
     public String getNome(){
         return "Saco de ouro";
     }

@@ -1,8 +1,8 @@
-package eventos.fogueira;
+package eventos.escolha;
 
 import entidades.Heroi;
 
-public class MaisEnergia implements ItemFogueira{
+public class MaisEnergia implements ItemEscolha{
     public String getNome(){
         return "Poção de energia";
     }

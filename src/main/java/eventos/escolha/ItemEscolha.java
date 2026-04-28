@@ -1,8 +1,8 @@
-package eventos.fogueira;
+package eventos.escolha;
 
 import entidades.Heroi;
 
-public interface ItemFogueira {
+public interface ItemEscolha {
     String getNome();
 
     void aplicar(Heroi heroi);

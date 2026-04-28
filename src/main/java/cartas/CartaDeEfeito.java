@@ -121,7 +121,7 @@ public class CartaDeEfeito extends Carta {
         if (this.tipoEfeito.equalsIgnoreCase("veneno")) {
             novoEfeito = new Veneno(this.tipoEfeito, alvo, this.acumulo, getEfeito(), this.evento, this.batalha);
 
-        } else if (this.tipoEfeito.equalsIgnoreCase("buff")) {
+        } else if (this.tipoEfeito.equalsIgnoreCase("cura")) {
             novoEfeito = new Cura(this.tipoEfeito, alvo, this.acumulo, getEfeito(), this.evento, this.batalha);
 
         }

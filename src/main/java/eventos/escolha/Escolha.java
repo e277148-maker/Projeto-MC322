@@ -1,4 +1,4 @@
-package eventos.fogueira;
+package eventos.escolha;
 
 import java.util.Scanner;
 
@@ -6,7 +6,7 @@ import baralho.Baralho;
 import entidades.Heroi;
 
 
-public class Fogueira {
+public class Escolha {
     
     
     // Metodos

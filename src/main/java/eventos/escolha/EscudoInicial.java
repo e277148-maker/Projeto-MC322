@@ -1,8 +1,8 @@
-package eventos.fogueira;
+package eventos.escolha;
 
 import entidades.Heroi;
 
-public class EscudoInicial implements ItemFogueira {
+public class EscudoInicial implements ItemEscolha {
     public String getNome(){
         return "Armadura permanente";
     }

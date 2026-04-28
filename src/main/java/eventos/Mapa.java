@@ -7,7 +7,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import baralho.Baralho;
 import entidades.Heroi;
 import eventos.batalha.Batalha;
-import eventos.fogueira.Fogueira;
+import eventos.escolha.Escolha;
 import eventos.loja.Loja;
 
 /**
@@ -24,7 +24,7 @@ public class Mapa {
      * @param scanner Utilizado para receber inputs do jogador
      * @param posicaoBatalha Posição da batalha na arvore de batalhas
      */
-    public void rodarSequnciaDeBatalhas(DefaultMutableTreeNode noBatalhaInicial, Heroi heroi, Baralho baralho, Scanner scanner, Loja loja, Fogueira fogueira){
+    public void rodarSequnciaDeBatalhas(DefaultMutableTreeNode noBatalhaInicial, Heroi heroi, Baralho baralho, Scanner scanner, Loja loja, Escolha fogueira){
         Batalha batalha = (Batalha) noBatalhaInicial.getUserObject();
         batalha.iniciar(baralho, heroi, scanner);
         if (heroi.estarVivo() & !noBatalhaInicial.isLeaf()){

@@ -18,7 +18,7 @@ import entidades.Inimigo;
 import eventos.*;
 import eventos.batalha.Batalha;
 import eventos.batalha.EventoDaBatalha;
-import eventos.fogueira.Fogueira;
+import eventos.escolha.Escolha;
 import eventos.loja.Loja;
 import baralho.Baralho;
 /**
@@ -227,7 +227,7 @@ public class App {
 
                 // Criar fogueira
 
-                Fogueira fogueira = new Fogueira();
+                Escolha fogueira = new Escolha();
 
 
 
