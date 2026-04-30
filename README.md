@@ -28,6 +28,21 @@ O herói começa com 100 de vida e 6 de energia por turno. O jogador deve escolh
 - Feitiço de cura (custo 2) Cura 4 de vida do herói
 - Poção de cura (custo 3) Cura 5 de vida do herói
 
+**Cartas que podem ser compradas:**
+- Adaga envenenada (custo 2): causa 5 de dano ao inimigo
+- Curativo (custo 2) Cura 5 de vida do herói
+- Soro de resistencia (custo 1) Cura 4 de vida do herói
+
+**Loja:**
+A loja ocorre depois de toda batalha e permite o jogador compre itens que i ajudem na proxima batalha.
+
+**Escolha:**
+Depois de toda batalha o jogador escolhe entre ganhar mais ouro, energia ou escudo
+
+## Escolha do padr ̃ao de design para loja e escolha
+
+Para implementar a loja e a escolha foi utilizado o padr ̃ao de design Strategy. Nesse padrão cada item da loja é uma classe que implementa a interface ItemLoja e ItemEscolha, ou seja, cada item da loja possui um metodo interno que excuta a compra/execução do item de modo que para a loja e a escolha o tipo do item seja indiferente.
+
 ## Compilação e execução
 
 ### Compilar
