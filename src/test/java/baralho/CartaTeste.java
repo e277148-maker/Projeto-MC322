@@ -5,17 +5,15 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import entidades.Heroi;
-import entidades.Inimigo;
-import batalhas.Batalha;
-import batalhas.EventoDaBatalha;
+import entidades.*;
+import eventos.batalha.*;
 import cartas.Carta;
 
 public class CartaTeste {
 
     class BatalhaFake extends Batalha {
         public BatalhaFake() {
-            super(new ArrayList<>(), new ArrayList<>(), new String());
+            super(new ArrayList<>(), new ArrayList<>(), new String(), new ArrayList<>());
         }
     }
 
@@ -27,7 +25,7 @@ public class CartaTeste {
 
     class HeroiFake extends Heroi {
         public HeroiFake(Batalha batalha) {
-            super("Heroi", "Teste", 100, 0, new ArrayList<>(), 100, 10, true, batalha);
+            super("Heroi", "Teste", 100, 0, new ArrayList<>(), 100, 10, true, batalha, 0 , new Baralho(null, null, null), 0, 0);
         }
     }
 
@@ -88,6 +86,7 @@ public class CartaTeste {
 
     @Test
     void testUsarCartaSemErro() {
+
         Batalha batalha = new BatalhaFake();
 
         Heroi h = new HeroiFake(batalha);

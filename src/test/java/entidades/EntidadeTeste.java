@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import batalhas.Batalha;
+import eventos.batalha.*;
 import efeitos.Efeito;
 
 // Classe de teste
@@ -34,7 +34,7 @@ class EfeitoFake extends Efeito {
     @Test
     void testAplicarEfeitoNovo() {
         List<Efeito> efeitos = new ArrayList<>();
-        Batalha batalha = new Batalha(new ArrayList<>(), new ArrayList<>(), "NomeTeste");
+        Batalha batalha = new Batalha(new ArrayList<>(), new ArrayList<>(), "NomeTeste", new ArrayList<>());
 
         Entidade e = new EntidadeFake(100, 0, efeitos, batalha);
 
@@ -48,7 +48,7 @@ class EfeitoFake extends Efeito {
     @Test
     void testAcumularEfeito() {
         List<Efeito> efeitos = new ArrayList<>();
-        Batalha batalha = new Batalha(new ArrayList<>(), new ArrayList<>(), "NomeTeste");
+        Batalha batalha = new Batalha(new ArrayList<>(), new ArrayList<>(), "NomeTeste", new ArrayList<>());
 
         Entidade e = new EntidadeFake(100, 0, efeitos, batalha);
 

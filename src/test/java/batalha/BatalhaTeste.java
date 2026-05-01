@@ -8,8 +8,7 @@ import java.util.*;
 import entidades.*;
 import efeitos.*;
 import baralho.*;
-import batalhas.Batalha;
-import batalhas.EventoDaBatalha;
+import eventos.batalha.*;
 import cartas.*;
 
 public class BatalhaTeste {
@@ -51,7 +50,7 @@ public class BatalhaTeste {
         String nome = "NomeTeste";
         eventos.add(new EventoFake());
 
-        Batalha batalha = new Batalha(efeitos, eventos, nome);
+        Batalha batalha = new Batalha(efeitos, eventos, nome, new ArrayList<>());
 
         EfeitoFake efeito = new EfeitoFake();
 
@@ -64,7 +63,7 @@ public class BatalhaTeste {
 
     @Test
     void testGettersSetters() {
-        Batalha b = new Batalha(new ArrayList<>(), new ArrayList<>(), "NomeTeste");
+        Batalha b = new Batalha(new ArrayList<>(), new ArrayList<>(), "NomeTeste", new ArrayList<>());
 
         List<EventoDaBatalha> eventos = new ArrayList<>();
         List<Efeito> efeitos = new ArrayList<>();
@@ -84,7 +83,7 @@ public class BatalhaTeste {
         eventos.add(new EventoFake());
         eventos.add(new EventoFake());
 
-        Batalha batalha = new Batalha(new ArrayList<>(), eventos, "NomeTeste");
+        Batalha batalha = new Batalha(new ArrayList<>(), eventos, "NomeTeste", new ArrayList<>());
 
         Heroi heroi = new Heroi(
             "Heroi", "desc",
@@ -94,7 +93,11 @@ public class BatalhaTeste {
             100,
             10,
             true,
-            batalha
+            batalha,
+            0,
+            new Baralho(null, null, null),
+            0,
+            0
         );
 
         List<EventoDaBatalha> eventosInimigo = new ArrayList<>();
@@ -130,7 +133,7 @@ public class BatalhaTeste {
         Scanner scanner = new Scanner(new java.io.ByteArrayInputStream("0\n".repeat(100).getBytes()));
 
         assertDoesNotThrow(() -> {
-            batalha.rodarBatalha(baralho, heroi, inimigos, scanner);
+            batalha.iniciar(baralho, heroi, scanner);
         });
     }
 }

@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 
 import entidades.*;
-import batalhas.*;
+import eventos.batalha.*;
 import cartas.*;
 
 public class SmokeTest {
 
     class BatalhaFake extends Batalha {
         public BatalhaFake() {
-            super(new ArrayList<>(), new ArrayList<>(), "NomeTeste");
+            super(new ArrayList<>(), new ArrayList<>(), "NomeTeste", new ArrayList<>());
         }
     }
 
@@ -42,7 +42,7 @@ public class SmokeTest {
         eventos.add(new EventoFake());
 
         Heroi heroi = new Heroi("Heroi", "desc", 100, 0,
-                new ArrayList<>(), 100, 10, true, batalha);
+                new ArrayList<>(), 100, 10, true, batalha, 0, new Baralho(null, null, null), 0, 0);
 
         Inimigo inimigo = new Inimigo("Inimigo", "desc", 100, 0,
                 new ArrayList<>(), 100, 10,

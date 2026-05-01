@@ -6,14 +6,13 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import batalhas.Batalha;
-import batalhas.EventoDaBatalha;
+import eventos.batalha.*;
 
 public class InimigoTeste {
 
     class BatalhaFake extends Batalha {
         public BatalhaFake() {
-            super(new ArrayList<>(), new ArrayList<>(), "NomeTeste");
+            super(new ArrayList<>(), new ArrayList<>(), "NomeTeste", new ArrayList<>());
         }
     }
 
@@ -25,7 +24,7 @@ public class InimigoTeste {
 
     class HeroiFake extends Heroi {
         public HeroiFake(Batalha batalha) {
-            super("Heroi", "Teste", 100, 0, new ArrayList<>(), 100, 10, true, batalha);
+            super("Heroi", "Teste", 100, 0, new ArrayList<>(), 100, 10, true, batalha, 0, new Baralho(null, null, null), 0, 0);
         }
     }
 
