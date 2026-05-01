@@ -8,6 +8,7 @@ import java.util.*;
 import entidades.*;
 import eventos.batalha.*;
 import cartas.*;
+import baralho.Baralho;
 
 public class SmokeTest {
 

@@ -8,6 +8,8 @@ import java.util.List;
 
 import eventos.batalha.*;
 
+import baralho.Baralho;
+
 public class InimigoTeste {
 
     class BatalhaFake extends Batalha {
