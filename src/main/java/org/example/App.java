@@ -168,7 +168,7 @@ public class App {
                 CartaDeDano carta_arco_flecha = new CartaDeDano("Arco e Flecha", "Um arco e flechas precisas que causam dano à distância.", 3, 11);
                 CartaDeDano carta_adaga_de_lancamento = new CartaDeDano("Adaga de lançamento", "Uma adaga que pode ser jogada no inimigo", 2, 10);
                 CartaDeDano carta_besta = new CartaDeDano("Besta", "uma besta que dispara dardos no inimigo", 4, 13);
-        
+
 
                 CartaEscudo carta_armadura = new CartaEscudo("Armadura", "Uma armadura resistente que aumenta sua defesa.", 3, 15);
                 CartaEscudo carta_escudo_madeira = new CartaEscudo("Escudo de Madeira", "Um escudo de madeira que aumenta sua defesa.", 2, 10);
